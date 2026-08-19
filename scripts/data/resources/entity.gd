@@ -9,9 +9,10 @@ extends CharacterBody3D
 var turn_speed := 5
 var rand_pos
 var player_inside: bool = false
-var player = null
+var player
 
 func _ready() -> void:
+	player = get_tree().get_first_node_in_group("player")
 	_on_wander_timer_timeout()
 	wander_timer.wait_time = randf_range(wander_timer.wait_time - 1, wander_timer.wait_time + 3)
 	wander_timer.start()
@@ -30,12 +31,11 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func detect_node(target: Node3D) -> bool:
-	if !target:
+	if target == null:
 		return false
 	var space_state = get_world_3d().direct_space_state
 	var query = PhysicsRayQueryParameters3D.create(
-		global_position,
-		target.global_position)
+		global_position,target.global_position)
 	query.exclude = [get_rid()]
 	query.collision_mask = 2
 	var result = space_state.intersect_ray(query)
@@ -60,8 +60,9 @@ func rotate_to_target(delta) -> void:
 	model.rotation.y = lerp_angle(model.rotation.y, target_angle, turn_speed * delta)
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	player_inside = true
-	player = body
+	if body == player:
+		player_inside = true
 
 func _on_area_3d_body_exited(body: Node3D) -> void:
-	player_inside = false
+	if body == player:
+		player_inside = false

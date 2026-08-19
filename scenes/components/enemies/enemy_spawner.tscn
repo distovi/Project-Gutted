@@ -12,6 +12,7 @@ script/source = "extends Node3D
 @export var enable: bool = true
 
 func _ready():
+	spawn_entity()
 	spawn_timer.wait_time = randf_range(spawn_timer.wait_time - 1, spawn_timer.wait_time + 3)
 	spawn_timer.start()
 

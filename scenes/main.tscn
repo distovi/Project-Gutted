@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://c7arfio0oosxt" path="res://scenes/components/player_character.tscn" id="2_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://cf08c4buh3kp5" path="res://scenes/components/player_spawner.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://bj106oj17374n" path="res://scenes/components/enemies/enemy_spawner.tscn" id="3_sugp2"]
-[ext_resource type="PackedScene" uid="uid://d1m35v8dsjray" path="res://scenes/components/prey/prey.tscn" id="5_tbgi4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sugp2"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -58,8 +57,8 @@ material = SubResource("StandardMaterial3D_sugp2")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D/Terrain" unique_id=1094710966]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.9995, 4)
-layers = 3
 use_collision = true
+collision_layer = 3
 size = Vector3(8, 4, 2)
 material = SubResource("StandardMaterial3D_sugp2")
 
@@ -71,8 +70,8 @@ affect_navigation_mesh = true
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="NavigationRegion3D/Terrain" unique_id=655564046]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1.9995, -4)
-layers = 3
 use_collision = true
+collision_layer = 3
 size = Vector3(8, 4, 2)
 material = SubResource("StandardMaterial3D_sugp2")
 
@@ -84,8 +83,8 @@ affect_navigation_mesh = true
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="NavigationRegion3D/Terrain" unique_id=2051404808]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1.9995, -4)
-layers = 3
 use_collision = true
+collision_layer = 3
 size = Vector3(8, 4, 2)
 material = SubResource("StandardMaterial3D_sugp2")
 
@@ -104,6 +103,3 @@ affect_navigation_mesh = true
 [node name="EnemySpawner" parent="." unique_id=2016670479 node_paths=PackedStringArray("enemy_folder") instance=ExtResource("3_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 7, 12)
 enemy_folder = NodePath("../Entities/Enemies")
-
-[node name="Prey" parent="." unique_id=699820936 instance=ExtResource("5_tbgi4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 1, 6)

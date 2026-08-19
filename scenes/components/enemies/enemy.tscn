@@ -13,7 +13,8 @@ material = SubResource("StandardMaterial3D_8tegq")
 [sub_resource type="SphereShape3D" id="SphereShape3D_7p1mj"]
 radius = 12.0
 
-[node name="Enemy" type="CharacterBody3D" unique_id=699820936 node_paths=PackedStringArray("model")]
+[node name="Enemy" type="CharacterBody3D" unique_id=699820936 node_paths=PackedStringArray("model") groups=["threat"]]
+collision_layer = 3
 script = ExtResource("1_7p1mj")
 model = NodePath("MeshInstance3D")
 
