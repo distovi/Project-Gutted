@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://c7arfio0oosxt"]
+
+[ext_resource type="Script" uid="uid://c28chv5vm3sq0" path="res://scripts/data/player/player_character.gd" id="1_02ohv"]
+[ext_resource type="Script" uid="uid://xroa4lmyebse" path="res://scripts/data/ui/hud.gd" id="2_5up26"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tfo3t"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_02ohv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6r27q"]
+font_size = 7
+
+[node name="PlayerCharacter" type="CharacterBody3D" unique_id=766062974 groups=["players"]]
+collision_layer = 3
+script = ExtResource("1_02ohv")
+jump_velocity = 4.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=3033541]
+visible = false
+shape = SubResource("CapsuleShape3D_tfo3t")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1268358764]
+mesh = SubResource("CapsuleMesh_02ohv")
+
+[node name="CameraPos" type="Node3D" parent="." unique_id=1098574541]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CameraPos" unique_id=1112910038]
+fov = 90.0
+
+[node name="RayCast3D" type="RayCast3D" parent="CameraPos" unique_id=1178474908]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+visible = false
+
+[node name="HUD" type="Control" parent="." unique_id=1544872282]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_5up26")
+
+[node name="Crosshair" type="ColorRect" parent="HUD" unique_id=1603673758]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.01666665, 1, 0, 1)
+
+[node name="Velocity" type="Label" parent="HUD" unique_id=2010146243]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "vel:"
+label_settings = SubResource("LabelSettings_6r27q")
+
+[node name="JumpBuffer" type="Timer" parent="." unique_id=1601547242]
+wait_time = 0.2
+one_shot = true
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=2058931996]
+visible = false
+
+[node name="StateMachine" type="Node" parent="." unique_id=319729613]
+
+[node name="Movement" type="Node" parent="StateMachine" unique_id=879369582]
+
+[node name="Idle" type="Node" parent="StateMachine/Movement" unique_id=905066628]
+
+[node name="Vertical" type="Node" parent="StateMachine" unique_id=795594847]
+
+[node name="Action" type="Node" parent="StateMachine" unique_id=1749506693]
+
+[node name="Forced" type="Node" parent="StateMachine" unique_id=18579804]

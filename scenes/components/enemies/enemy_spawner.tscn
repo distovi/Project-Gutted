@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://bj106oj17374n"]
+
+[ext_resource type="PackedScene" uid="uid://1kgm8sv0k68c" path="res://scenes/components/enemies/enemy.tscn" id="2_devoi"]
+
+[sub_resource type="GDScript" id="GDScript_bst7d"]
+script/source = "extends Node3D
+
+@export var enemy_scene: PackedScene
+@export var enemy_folder: Node3D
+@onready var spawn_timer = $Timer
+
+@export var enable: bool = true
+
+func _ready():
+	spawn_timer.wait_time = randf_range(spawn_timer.wait_time - 1, spawn_timer.wait_time + 3)
+	spawn_timer.start()
+
+func spawn_entity():
+	if !enable:
+		return
+	var enemy = enemy_scene.instantiate()
+	enemy.name = enemy.name + str(enemy_folder.get_child_count())
+	enemy.position = self.position - Vector3(0,6,0)
+	enemy_folder.add_child(enemy)
+
+func _on_timer_timeout() -> void:
+	spawn_entity()
+"
+
+[node name="EnemySpawner" type="Node3D" unique_id=1030907601]
+script = SubResource("GDScript_bst7d")
+enemy_scene = ExtResource("2_devoi")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=669300597]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+light_color = Color(1, 0, 0, 1)
+light_energy = 16.0
+light_indirect_energy = 4.943
+light_volumetric_fog_energy = 7.976
+light_size = 0.743
+light_bake_mode = 1
+spot_range = 7.0
+spot_angle = 21.11
+
+[node name="Timer" type="Timer" parent="." unique_id=1706362339]
+wait_time = 14.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

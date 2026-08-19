@@ -1,0 +1,109 @@
+[gd_scene format=3 uid="uid://c4qbj4t4cfjct"]
+
+[ext_resource type="Texture2D" uid="uid://bkl4xiwhxgnv8" path="res://assets/grass test.png" id="1_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://c7arfio0oosxt" path="res://scenes/components/player_character.tscn" id="2_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://cf08c4buh3kp5" path="res://scenes/components/player_spawner.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://bj106oj17374n" path="res://scenes/components/enemies/enemy_spawner.tscn" id="3_sugp2"]
+[ext_resource type="PackedScene" uid="uid://d1m35v8dsjray" path="res://scenes/components/prey/prey.tscn" id="5_tbgi4"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sugp2"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_jyhfs"]
+sky_material = SubResource("ProceduralSkyMaterial_sugp2")
+
+[sub_resource type="Environment" id="Environment_tbgi4"]
+background_mode = 2
+sky = SubResource("Sky_jyhfs")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_sugp2"]
+vertices = PackedVector3Array(-24.25, 0.4995, -3.75, -11.75, 0.4995, -3.75, -11.75, 0.4995, -5.25, -11.25, 0.4995, -5.75, -9.25, 0.4995, -24.25, -24.25, 0.4995, -24.25, -9.25, 0.4995, -5.75, -4.5, 0.4995, -5.75, -4.5, 0.4995, -24.25, -2, 0.4995, -5.25, -2, 0.4995, -4, 2.25, 0.4995, -4, 2.25, 0.4995, -5.25, 2.75, 0.4995, -5.75, 4.75, 0.4995, -5.75, 4.75, 0.4995, -24.25, -2.5, 0.4995, -5.75, 9.5, 0.4995, -5.75, 9.5, 0.4995, -24.25, 12, 0.4995, -5.25, 12, 0.4995, -4, 24.25, 0.4995, -4, 11.5, 0.4995, -5.75, 24.25, 0.4995, -24.25, -2, 0.4995, -2.75, 2.25, 0.4995, -2.5, 3, 0.4995, 2.25, 3.25, 0.4995, -2, -2.75, 0.4995, -2, -4, 0.4995, 2.25, -4.25, 0.4995, -2, 4, 0.4995, 2.75, 11.25, 0.4995, -2, 4, 0.4995, 5.25, 2, 0.4995, 24.25, 24.25, 0.4995, 24.25, 12, 0.4995, -2.75, 3.25, 0.4995, 6, 1.75, 0.4995, 6, -5.25, 0.4995, 2.25, -5.75, 0.4995, 2.75, -11.25, 0.4995, -2, -4, 0.4995, 24.25, -5.25, 0.4995, 6, -5.75, 0.4995, 5.5, -11.75, 0.4995, -2.5, -24.25, 0.4995, 24.25, -3.75, 0.4995, 6)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(2, 0, 3), PackedInt32Array(3, 0, 5), PackedInt32Array(3, 5, 4), PackedInt32Array(4, 6, 3), PackedInt32Array(4, 8, 6), PackedInt32Array(6, 8, 7), PackedInt32Array(12, 11, 9), PackedInt32Array(9, 11, 10), PackedInt32Array(15, 14, 13), PackedInt32Array(9, 16, 12), PackedInt32Array(12, 16, 13), PackedInt32Array(13, 16, 8), PackedInt32Array(13, 8, 15), PackedInt32Array(16, 7, 8), PackedInt32Array(15, 18, 14), PackedInt32Array(14, 18, 17), PackedInt32Array(21, 20, 19), PackedInt32Array(19, 22, 21), PackedInt32Array(21, 22, 23), PackedInt32Array(23, 22, 18), PackedInt32Array(22, 17, 18), PackedInt32Array(10, 11, 24), PackedInt32Array(24, 11, 25), PackedInt32Array(27, 26, 25), PackedInt32Array(25, 26, 24), PackedInt32Array(24, 26, 28), PackedInt32Array(28, 26, 29), PackedInt32Array(29, 30, 28), PackedInt32Array(26, 27, 31), PackedInt32Array(31, 27, 32), PackedInt32Array(32, 21, 33), PackedInt32Array(33, 21, 34), PackedInt32Array(34, 21, 35), PackedInt32Array(33, 31, 32), PackedInt32Array(36, 20, 21), PackedInt32Array(21, 32, 36), PackedInt32Array(34, 38, 37), PackedInt32Array(33, 34, 37), PackedInt32Array(30, 29, 39), PackedInt32Array(39, 40, 30), PackedInt32Array(30, 40, 41), PackedInt32Array(44, 43, 42), PackedInt32Array(41, 40, 44), PackedInt32Array(41, 44, 45), PackedInt32Array(45, 44, 0), PackedInt32Array(0, 44, 42), PackedInt32Array(0, 42, 46), PackedInt32Array(0, 1, 45), PackedInt32Array(43, 47, 42), PackedInt32Array(47, 38, 42), PackedInt32Array(42, 38, 34)]
+agent_radius = 0.75
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sugp2"]
+render_priority = 4
+albedo_color = Color(0.5, 0.5, 0.5, 1)
+albedo_texture = ExtResource("1_0wfyh")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+texture_filter = 2
+
+[node name="Main" type="Node" unique_id=574311110]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1649259946]
+environment = SubResource("Environment_tbgi4")
+
+[node name="PlayerSpawner" parent="." unique_id=1030907601 node_paths=PackedStringArray("entity_folder") instance=ExtResource("3_h2yge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+player_scene = ExtResource("2_jyhfs")
+entity_folder = NodePath("../Entities")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=11247759]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=638283351]
+navigation_mesh = SubResource("NavigationMesh_sugp2")
+
+[node name="Terrain" type="Node3D" parent="NavigationRegion3D" unique_id=196850702]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/Terrain" unique_id=1648210611]
+use_collision = true
+collision_mask = 3
+size = Vector3(50, 0.001, 50)
+material = SubResource("StandardMaterial3D_sugp2")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D/Terrain" unique_id=1094710966]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.9995, 4)
+layers = 3
+use_collision = true
+size = Vector3(8, 4, 2)
+material = SubResource("StandardMaterial3D_sugp2")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="NavigationRegion3D/Terrain/CSGBox3D2" unique_id=1432426252]
+transform = Transform3D(8, 0, 0, 0, 4, 0, 0, 0, 2, 0, 0, 0)
+height = 0.6
+vertices = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5)
+affect_navigation_mesh = true
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="NavigationRegion3D/Terrain" unique_id=655564046]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1.9995, -4)
+layers = 3
+use_collision = true
+size = Vector3(8, 4, 2)
+material = SubResource("StandardMaterial3D_sugp2")
+
+[node name="NavigationObstacle3D2" type="NavigationObstacle3D" parent="NavigationRegion3D/Terrain/CSGBox3D3" unique_id=1966447355]
+transform = Transform3D(8, 0, 0, 0, 4, 0, 0, 0, 2, 0, 0, 0)
+height = 0.6
+vertices = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5)
+affect_navigation_mesh = true
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="NavigationRegion3D/Terrain" unique_id=2051404808]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1.9995, -4)
+layers = 3
+use_collision = true
+size = Vector3(8, 4, 2)
+material = SubResource("StandardMaterial3D_sugp2")
+
+[node name="NavigationObstacle3D3" type="NavigationObstacle3D" parent="NavigationRegion3D/Terrain/CSGBox3D4" unique_id=1916183393]
+transform = Transform3D(8, 0, 0, 0, 4, 0, 0, 0, 2, 0, 0, 0)
+height = 0.6
+vertices = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5)
+affect_navigation_mesh = true
+
+[node name="Entities" type="Node3D" parent="." unique_id=114726371]
+
+[node name="Enemies" type="Node3D" parent="Entities" unique_id=214201817]
+
+[node name="Prey" type="Node3D" parent="Entities" unique_id=1163759348]
+
+[node name="EnemySpawner" parent="." unique_id=2016670479 node_paths=PackedStringArray("enemy_folder") instance=ExtResource("3_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 7, 12)
+enemy_folder = NodePath("../Entities/Enemies")
+
+[node name="Prey" parent="." unique_id=699820936 instance=ExtResource("5_tbgi4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 1, 6)

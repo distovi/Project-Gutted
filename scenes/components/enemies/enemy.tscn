@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://1kgm8sv0k68c"]
+
+[ext_resource type="Script" uid="uid://cd3d76e5s6bgv" path="res://scripts/data/resources/entity.gd" id="1_7p1mj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8tegq"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_7p1mj"]
+material = SubResource("StandardMaterial3D_8tegq")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_md0e3"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7p1mj"]
+radius = 12.0
+
+[node name="Enemy" type="CharacterBody3D" unique_id=699820936 node_paths=PackedStringArray("model")]
+script = ExtResource("1_7p1mj")
+model = NodePath("MeshInstance3D")
+
+[node name="WanderTimer" type="Timer" parent="." unique_id=17996119]
+wait_time = 5.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1625010788]
+mesh = SubResource("CapsuleMesh_7p1mj")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D" unique_id=871355223]
+transform = Transform3D(1, 0, 0, 0, 0.3, 0, 0, 0, 1, 0, 0.6, 0.39999998)
+mesh = SubResource("CapsuleMesh_7p1mj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1671497314]
+shape = SubResource("CapsuleShape3D_md0e3")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1218836878]
+target_desired_distance = 0.1
+debug_enabled = true
+
+[node name="Area3D" type="Area3D" parent="." unique_id=463950309]
+collision_layer = 256
+collision_mask = 258
+input_ray_pickable = false
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D" unique_id=1909436460]
+shape = SubResource("SphereShape3D_7p1mj")
+
+[connection signal="timeout" from="WanderTimer" to="." method="_on_wander_timer_timeout"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
