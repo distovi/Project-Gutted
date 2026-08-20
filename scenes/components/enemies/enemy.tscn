@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://1kgm8sv0k68c"]
 
-[ext_resource type="Script" uid="uid://cd3d76e5s6bgv" path="res://scripts/data/resources/entity.gd" id="1_7p1mj"]
+[ext_resource type="Script" uid="uid://chaj3bupyxnry" path="res://scripts/enemy.gd" id="1_njuet"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8tegq"]
 albedo_color = Color(1, 0, 0, 1)
@@ -13,10 +13,9 @@ material = SubResource("StandardMaterial3D_8tegq")
 [sub_resource type="SphereShape3D" id="SphereShape3D_7p1mj"]
 radius = 12.0
 
-[node name="Enemy" type="CharacterBody3D" unique_id=699820936 node_paths=PackedStringArray("model") groups=["threat"]]
+[node name="Enemy" type="CharacterBody3D" unique_id=699820936 groups=["threat"]]
 collision_layer = 3
-script = ExtResource("1_7p1mj")
-model = NodePath("MeshInstance3D")
+script = ExtResource("1_njuet")
 
 [node name="WanderTimer" type="Timer" parent="." unique_id=17996119]
 wait_time = 5.0
@@ -33,7 +32,6 @@ shape = SubResource("CapsuleShape3D_md0e3")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1218836878]
 target_desired_distance = 0.1
-debug_enabled = true
 
 [node name="Area3D" type="Area3D" parent="." unique_id=463950309]
 collision_layer = 256

@@ -25,10 +25,16 @@ func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion:
+	if event is InputEventKey and event.keycode == KEY_TAB and event.pressed:
+		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		else:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		return
+	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		rotation_degrees.y -= event.relative.x
 		camera.rotation_degrees.x -= event.relative.y
-		camera.rotation_degrees.x = clamp(camera.rotation_degrees.x, -90, 90 )
+		camera.rotation_degrees.x = clamp(camera.rotation_degrees.x, -90, 90)
 		
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():

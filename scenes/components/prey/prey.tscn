@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://d1m35v8dsjray"]
 
 [ext_resource type="Script" uid="uid://cbqny8h2j82a" path="res://scripts/prey.gd" id="1_bhqvb"]
-[ext_resource type="ArrayMesh" uid="uid://dxck57pnxbhh" path="res://assets/models/hare.tres" id="2_bgu6u"]
+[ext_resource type="PackedScene" uid="uid://b3pxpvau0b5qe" path="res://assets/models/wild hare.blend" id="2_bgu6u"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_md0e3"]
 radius = 0.25
@@ -10,23 +10,20 @@ height = 1.0
 [sub_resource type="SphereShape3D" id="SphereShape3D_7p1mj"]
 radius = 6.0
 
-[node name="Prey" type="CharacterBody3D" unique_id=699820936 node_paths=PackedStringArray("model")]
+[node name="Prey" type="CharacterBody3D" unique_id=699820936]
 script = ExtResource("1_bhqvb")
-model = NodePath("MeshInstance3D")
+speed = 8
+
+[node name="WildHare" parent="." unique_id=1206845234 instance=ExtResource("2_bgu6u")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0.1)
 
 [node name="WanderTimer" type="Timer" parent="." unique_id=17996119]
 wait_time = 5.0
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1625010788]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0.1)
-mesh = ExtResource("2_bgu6u")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1671497314]
 shape = SubResource("CapsuleShape3D_md0e3")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1218836878]
-target_desired_distance = 0.1
-debug_enabled = true
 
 [node name="Area3D" type="Area3D" parent="." unique_id=463950309]
 collision_layer = 256

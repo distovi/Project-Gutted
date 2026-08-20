@@ -8,6 +8,11 @@
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_02ohv"]
 
+[sub_resource type="SphereMesh" id="SphereMesh_di51a"]
+flip_faces = true
+radius = 50.0
+height = 100.0
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_isdno"]
 render_priority = -1
 shader = ExtResource("2_di51a")
@@ -49,6 +54,10 @@ shape = SubResource("CapsuleShape3D_tfo3t")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1268358764]
 mesh = SubResource("CapsuleMesh_02ohv")
 
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=102278815]
+visible = false
+mesh = SubResource("SphereMesh_di51a")
+
 [node name="CameraPos" type="Node3D" parent="." unique_id=1098574541]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
@@ -61,6 +70,7 @@ visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CameraPos" unique_id=1254253471]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+visible = false
 extra_cull_margin = 16384.0
 mesh = SubResource("QuadMesh_8ltej")
 

@@ -1,34 +1,18 @@
-extends CharacterBody3D
+class_name MoveableEntity extends CharacterBody3D
 
 @onready var navi_agent3d: NavigationAgent3D = $NavigationAgent3D
 @onready var wander_timer = $WanderTimer
-@export var model: MeshInstance3D
-
+var model
 @export var wander_radius: float = 5.0
-
-var turn_speed := 5
+@export var turn_speed := 5
+@export var speed:int = 4
 var rand_pos
-var player_inside: bool = false
-var player
 
 func _ready() -> void:
-	player = get_tree().get_first_node_in_group("player")
-	_on_wander_timer_timeout()
-	wander_timer.wait_time = randf_range(wander_timer.wait_time - 1, wander_timer.wait_time + 3)
-	wander_timer.start()
+	pass
 
 func _physics_process(delta: float) -> void:
-	if player_inside:
-		wander_timer.stop()
-		if detect_node(player):
-			navi_agent3d.set_target_position(player.position)
-	else:
-		if wander_timer.is_stopped() and navi_agent3d.is_navigation_finished():
-			wander_timer.start()
-	var direction = get_direction()
-	rotate_to_target(delta)
-	velocity = direction * 4.0
-	move_and_slide()
+	pass
 
 func detect_node(target: Node3D) -> bool:
 	if target == null:
@@ -51,6 +35,9 @@ func _on_wander_timer_timeout() -> void:
 
 func get_direction() -> Vector3:
 	var destination = navi_agent3d.get_next_path_position()
+	var distance_to_dest = (destination - global_position).length()
+	if distance_to_dest < 0.1:
+		return Vector3.ZERO
 	var direction = (destination - global_position).normalized()
 	return direction
 
@@ -60,9 +47,12 @@ func rotate_to_target(delta) -> void:
 	model.rotation.y = lerp_angle(model.rotation.y, target_angle, turn_speed * delta)
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	if body == player:
-		player_inside = true
+	pass
 
 func _on_area_3d_body_exited(body: Node3D) -> void:
-	if body == player:
-		player_inside = false
+	pass
+
+func entity_setup() -> void:
+	_on_wander_timer_timeout()
+	wander_timer.wait_time = randf_range(wander_timer.wait_time - 1, wander_timer.wait_time + 3)
+	wander_timer.start()

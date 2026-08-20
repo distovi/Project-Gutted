@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b3pxpvau0b5qe"
-path="res://.godot/imported/wild hare.blend-183ca31d00773d68f0d5b56ea4657d24.scn"
+uid="uid://5lefdmdqemgs"
+path="res://.godot/imported/spruce tree.blend-f9d5777495b504d83907dfce8100f09b.scn"
 
 [deps]
 
-source_file="res://refs/wild hare.blend"
-dest_files=["res://.godot/imported/wild hare.blend-183ca31d00773d68f0d5b56ea4657d24.scn"]
+source_file="res://assets/models/spruce tree.blend"
+dest_files=["res://.godot/imported/spruce tree.blend-f9d5777495b504d83907dfce8100f09b.scn"]
 
 [params]
 
