@@ -8,9 +8,11 @@ extends CharacterBody3D
 
 var turn_speed := 5
 var rand_pos
-var player_inside: bool = false
-var player = null
+var threat_inside: bool = false
+var threats: Array[CharacterBody3D] = []
 var distance = 5
+
+@export var speed:int = 8
 
 func _ready() -> void:
 	_on_wander_timer_timeout()
@@ -18,10 +20,19 @@ func _ready() -> void:
 	wander_timer.start()
 
 func _physics_process(delta: float) -> void:
-	if player_inside:
+	if threat_inside:
 		wander_timer.stop()
-		if detect_node(player):
-			var direction_away = (global_position - player.global_position).normalized()
+		var threat_center = Vector3.ZERO
+		var threat_count = 0
+		for threat in threats:
+			if detect_node(threat):
+				threat_center += threat.global_position
+				threat_count += 1
+
+		if threat_count > 0:
+			threat_center /= threat_count  #average position
+			
+			var direction_away = (global_position - threat_center).normalized()
 			var target_position = global_position + direction_away * distance
 			navi_agent3d.set_target_position(target_position)
 	else:
@@ -29,7 +40,7 @@ func _physics_process(delta: float) -> void:
 			wander_timer.start()
 	var direction = get_direction()
 	rotate_to_target(delta)
-	velocity = direction * 4.0
+	velocity = direction * speed
 	move_and_slide()
 
 func detect_node(target: Node3D) -> bool:
@@ -37,8 +48,7 @@ func detect_node(target: Node3D) -> bool:
 		return false
 	var space_state = get_world_3d().direct_space_state
 	var query = PhysicsRayQueryParameters3D.create(
-		global_position,
-		target.global_position)
+		global_position, target.global_position)
 	query.exclude = [get_rid()]
 	query.collision_mask = 2
 	var result = space_state.intersect_ray(query)
@@ -63,8 +73,12 @@ func rotate_to_target(delta) -> void:
 	model.rotation.y = lerp_angle(model.rotation.y, target_angle, turn_speed * delta)
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	player_inside = true
-	player = body
+	threat_inside = true
+	if body.is_in_group("threat"):
+		threats.append(body)
 
 func _on_area_3d_body_exited(body: Node3D) -> void:
-	player_inside = false
+	if body.is_in_group("threat") and threats.count(body) < 1:
+		threat_inside = false
+	if body.is_in_group("threat"):
+		threats.erase(body)
