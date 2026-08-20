@@ -2,10 +2,38 @@
 
 [ext_resource type="Script" uid="uid://c28chv5vm3sq0" path="res://scripts/data/player/player_character.gd" id="1_02ohv"]
 [ext_resource type="Script" uid="uid://xroa4lmyebse" path="res://scripts/data/ui/hud.gd" id="2_5up26"]
+[ext_resource type="Shader" uid="uid://bnnj4c28yjbl3" path="res://assets/shaders/filter.gdshader" id="2_di51a"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tfo3t"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_02ohv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_isdno"]
+render_priority = -1
+shader = ExtResource("2_di51a")
+shader_parameter/zNear = 0.05
+shader_parameter/zFar = 100.0
+shader_parameter/enable_outline = false
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/outline_thickness = 1.0
+shader_parameter/enable_color_limit = true
+shader_parameter/color_levels = 32
+shader_parameter/enable_color_palette = false
+shader_parameter/color1 = Color(1, 0.925, 0.839, 1)
+shader_parameter/color2 = Color(1, 0.831, 0.639, 1)
+shader_parameter/color3 = Color(1, 0.667, 0.369, 1)
+shader_parameter/color4 = Color(0.816, 0.506, 0.349, 1)
+shader_parameter/color5 = Color(0.553, 0.412, 0.478, 1)
+shader_parameter/color6 = Color(0.329, 0.306, 0.408, 1)
+shader_parameter/color7 = Color(0.125, 0.236, 0.337, 1)
+shader_parameter/color8 = Color(0.05, 0.169, 0.271, 1)
+shader_parameter/enable_dithering = false
+shader_parameter/dither_strength = 0.138000006555
+
+[sub_resource type="QuadMesh" id="QuadMesh_8ltej"]
+material = SubResource("ShaderMaterial_isdno")
+flip_faces = true
+size = Vector2(2, 2)
 
 [sub_resource type="LabelSettings" id="LabelSettings_6r27q"]
 font_size = 7
@@ -16,7 +44,6 @@ script = ExtResource("1_02ohv")
 jump_velocity = 4.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=3033541]
-visible = false
 shape = SubResource("CapsuleShape3D_tfo3t")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1268358764]
@@ -31,6 +58,11 @@ fov = 90.0
 [node name="RayCast3D" type="RayCast3D" parent="CameraPos" unique_id=1178474908]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CameraPos" unique_id=1254253471]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+extra_cull_margin = 16384.0
+mesh = SubResource("QuadMesh_8ltej")
 
 [node name="HUD" type="Control" parent="." unique_id=1544872282]
 layout_mode = 3
@@ -68,7 +100,6 @@ wait_time = 0.2
 one_shot = true
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=2058931996]
-visible = false
 
 [node name="StateMachine" type="Node" parent="." unique_id=319729613]
 

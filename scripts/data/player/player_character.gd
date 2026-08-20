@@ -6,15 +6,13 @@ class_name Player extends CharacterBody3D
 @onready var collision = $CollisionShape3D
 
 @export var walk_speed = 4
-@export var run_speed = 6
+@export var run_speed = 12
 @export var crouch_speed = 2.5
 var speed = 0
 
 var crouching: bool = false
 
 @export var friction = 0.25
-
-@export var mouse_sens = 0.002
 
 @export var jump_height: float = 26
 @export var jump_peak: float = 0.32
