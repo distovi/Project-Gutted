@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://bh7nkv2xtuhxl"]
+
+[ext_resource type="PackedScene" uid="uid://b3pxpvau0b5qe" path="res://refs/wild hare.blend" id="1_45d0l"]
+
+[node name="wild hare" unique_id=98225879 instance=ExtResource("1_45d0l")]
