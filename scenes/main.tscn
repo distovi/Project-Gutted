@@ -106,4 +106,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 7, 12)
 enemy_folder = NodePath("../Entities/Enemies")
 
 [node name="wild hare" parent="." unique_id=1910456241 instance=ExtResource("5_tbgi4")]
-transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1, 0, 1.0297735, 0)
+transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1, -7.33081, 0.39334023, 0)

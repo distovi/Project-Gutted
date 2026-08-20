@@ -3,3 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://b3pxpvau0b5qe" path="res://refs/wild hare.blend" id="1_45d0l"]
 
 [node name="wild hare" unique_id=98225879 instance=ExtResource("1_45d0l")]
+
+[node name="Cube" parent="." index="0" unique_id=827170122]
+transform = Transform3D(0.3, 0, 0, 0, 0.363, 0, 0, 0, 0.363, 0, 0, 0)
