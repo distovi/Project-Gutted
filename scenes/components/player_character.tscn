@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c28chv5vm3sq0" path="res://scripts/data/player/player_character.gd" id="1_02ohv"]
 [ext_resource type="Script" uid="uid://xroa4lmyebse" path="res://scripts/data/ui/hud.gd" id="2_5up26"]
 [ext_resource type="Shader" uid="uid://bnnj4c28yjbl3" path="res://assets/shaders/filter.gdshader" id="2_di51a"]
+[ext_resource type="Script" uid="uid://cbnsdxqmulfnb" path="res://scripts/data/components/health_component.gd" id="2_isdno"]
 [ext_resource type="Texture2D" uid="uid://t1ocy6etlnc7" path="res://assets/models/single barrel shotgun/sausage.png" id="3_n5ams"]
 [ext_resource type="PackedScene" uid="uid://bfpahaur0cgsr" path="res://assets/models/single barrel shotgun/single-barrel shotgun.blend" id="4_ooxcc"]
 [ext_resource type="LabelSettings" uid="uid://bmrktrw4ogggb" path="res://new_label_settings.tres" id="5_1x2km"]
@@ -74,7 +75,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 extra_cull_margin = 16384.0
 mesh = SubResource("QuadMesh_8ltej")
 
-[node name="single-barrel shotgun" parent="CameraPos" unique_id=592420183 instance=ExtResource("4_ooxcc")]
+[node name="single-barrel shotgun" parent="CameraPos" unique_id=301219307 instance=ExtResource("4_ooxcc")]
 transform = Transform3D(-0.3, 0, 4.5298744e-08, 0, 0.3, 0, -4.5298744e-08, 0, -0.3, 0.4, -0.3, -1.1000001)
 visible = false
 
@@ -162,5 +163,8 @@ one_shot = true
 [node name="Action" type="Node" parent="StateMachine" unique_id=1749506693]
 
 [node name="Forced" type="Node" parent="StateMachine" unique_id=18579804]
+
+[node name="HealthComponent" type="Node" parent="." unique_id=652733008]
+script = ExtResource("2_isdno")
 
 [connection signal="timeout" from="CameraPos/Sprite3D/Timer" to="CameraPos/Sprite3D" method="_on_timer_timeout"]
