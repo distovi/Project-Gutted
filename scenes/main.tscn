@@ -1,11 +1,12 @@
 [gd_scene format=3 uid="uid://c4qbj4t4cfjct"]
 
-[ext_resource type="Texture2D" uid="uid://bkl4xiwhxgnv8" path="res://assets/grass test.png" id="1_0wfyh"]
+[ext_resource type="Texture2D" uid="uid://bkl4xiwhxgnv8" path="res://assets/textures/grass test.png" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://c7arfio0oosxt" path="res://scenes/components/player_character.tscn" id="2_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://cf08c4buh3kp5" path="res://scenes/components/player_spawner.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://bj106oj17374n" path="res://scenes/components/enemies/enemy_spawner.tscn" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://g0tgayxh1wj8" path="res://scenes/spruce_tree.tscn" id="4_tefeu"]
 [ext_resource type="PackedScene" uid="uid://d1m35v8dsjray" path="res://scenes/components/prey/prey.tscn" id="5_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://bfpahaur0cgsr" path="res://assets/models/single barrel shotgun/single-barrel shotgun.blend" id="7_o6xl0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sugp2"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -103,7 +104,7 @@ affect_navigation_mesh = true
 [node name="spruce tree" parent="NavigationRegion3D/Trees" unique_id=2077801226 instance=ExtResource("4_tefeu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 5)
 
-[node name="NavigationObstacle3D4" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree" unique_id=1647561803]
+[node name="NavigationObstacle3D5" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree" unique_id=1647561803]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1, 0)
 height = 1.8
 vertices = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5)
@@ -112,7 +113,7 @@ affect_navigation_mesh = true
 [node name="spruce tree2" parent="NavigationRegion3D/Trees" unique_id=693970996 instance=ExtResource("4_tefeu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 5)
 
-[node name="NavigationObstacle3D4" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree2" unique_id=1043899334]
+[node name="NavigationObstacle3D5" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree2" unique_id=1043899334]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1, 0)
 height = 1.8
 vertices = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5)
@@ -121,7 +122,7 @@ affect_navigation_mesh = true
 [node name="spruce tree3" parent="NavigationRegion3D/Trees" unique_id=1548513154 instance=ExtResource("4_tefeu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 5)
 
-[node name="NavigationObstacle3D4" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree3" unique_id=1743727569]
+[node name="NavigationObstacle3D5" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree3" unique_id=1743727569]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1, 0)
 height = 1.8
 vertices = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5)
@@ -130,7 +131,7 @@ affect_navigation_mesh = true
 [node name="spruce tree4" parent="NavigationRegion3D/Trees" unique_id=1426723972 instance=ExtResource("4_tefeu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 10)
 
-[node name="NavigationObstacle3D4" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree4" unique_id=1498863835]
+[node name="NavigationObstacle3D5" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree4" unique_id=1498863835]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1, 0)
 height = 1.8
 vertices = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5)
@@ -139,7 +140,7 @@ affect_navigation_mesh = true
 [node name="spruce tree5" parent="NavigationRegion3D/Trees" unique_id=799707439 instance=ExtResource("4_tefeu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 10)
 
-[node name="NavigationObstacle3D4" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree5" unique_id=763510747]
+[node name="NavigationObstacle3D5" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree5" unique_id=763510747]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1, 0)
 height = 1.8
 vertices = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5)
@@ -148,7 +149,7 @@ affect_navigation_mesh = true
 [node name="spruce tree6" parent="NavigationRegion3D/Trees" unique_id=1350406034 instance=ExtResource("4_tefeu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 10)
 
-[node name="NavigationObstacle3D4" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree6" unique_id=1746727588]
+[node name="NavigationObstacle3D5" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree6" unique_id=1746727588]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1, 0)
 height = 1.8
 vertices = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5)
@@ -157,7 +158,7 @@ affect_navigation_mesh = true
 [node name="spruce tree7" parent="NavigationRegion3D/Trees" unique_id=937492696 instance=ExtResource("4_tefeu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 15)
 
-[node name="NavigationObstacle3D4" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree7" unique_id=1342241064]
+[node name="NavigationObstacle3D5" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree7" unique_id=1342241064]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1, 0)
 height = 1.8
 vertices = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5)
@@ -166,7 +167,7 @@ affect_navigation_mesh = true
 [node name="spruce tree8" parent="NavigationRegion3D/Trees" unique_id=878635430 instance=ExtResource("4_tefeu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 15)
 
-[node name="NavigationObstacle3D4" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree8" unique_id=847188420]
+[node name="NavigationObstacle3D5" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree8" unique_id=847188420]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1, 0)
 height = 1.8
 vertices = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5)
@@ -175,7 +176,7 @@ affect_navigation_mesh = true
 [node name="spruce tree9" parent="NavigationRegion3D/Trees" unique_id=738263 instance=ExtResource("4_tefeu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 15)
 
-[node name="NavigationObstacle3D4" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree9" unique_id=85231297]
+[node name="NavigationObstacle3D5" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree9" unique_id=85231297]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1, 0)
 height = 1.8
 vertices = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5)
@@ -184,7 +185,7 @@ affect_navigation_mesh = true
 [node name="spruce tree10" parent="NavigationRegion3D/Trees" unique_id=129355386 instance=ExtResource("4_tefeu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 20)
 
-[node name="NavigationObstacle3D4" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree10" unique_id=417299481]
+[node name="NavigationObstacle3D5" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree10" unique_id=417299481]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1, 0)
 height = 1.8
 vertices = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5)
@@ -193,7 +194,7 @@ affect_navigation_mesh = true
 [node name="spruce tree11" parent="NavigationRegion3D/Trees" unique_id=672585555 instance=ExtResource("4_tefeu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 20)
 
-[node name="NavigationObstacle3D4" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree11" unique_id=1449817733]
+[node name="NavigationObstacle3D5" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree11" unique_id=1449817733]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1, 0)
 height = 1.8
 vertices = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5)
@@ -202,7 +203,7 @@ affect_navigation_mesh = true
 [node name="spruce tree12" parent="NavigationRegion3D/Trees" unique_id=798570746 instance=ExtResource("4_tefeu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 20)
 
-[node name="NavigationObstacle3D4" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree12" unique_id=560148973]
+[node name="NavigationObstacle3D5" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree12" unique_id=560148973]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1, 0)
 height = 1.8
 vertices = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5)
@@ -211,7 +212,7 @@ affect_navigation_mesh = true
 [node name="spruce tree15" parent="NavigationRegion3D/Trees" unique_id=1676567423 instance=ExtResource("4_tefeu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, 5)
 
-[node name="NavigationObstacle3D4" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree15" unique_id=1758895315]
+[node name="NavigationObstacle3D5" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree15" unique_id=1758895315]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1, 0)
 height = 1.8
 vertices = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5)
@@ -220,7 +221,7 @@ affect_navigation_mesh = true
 [node name="spruce tree16" parent="NavigationRegion3D/Trees" unique_id=658602814 instance=ExtResource("4_tefeu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 10)
 
-[node name="NavigationObstacle3D4" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree16" unique_id=498731968]
+[node name="NavigationObstacle3D5" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree16" unique_id=498731968]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1, 0)
 height = 1.8
 vertices = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5)
@@ -229,7 +230,7 @@ affect_navigation_mesh = true
 [node name="spruce tree17" parent="NavigationRegion3D/Trees" unique_id=1370924366 instance=ExtResource("4_tefeu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
 
-[node name="NavigationObstacle3D4" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree17" unique_id=449270305]
+[node name="NavigationObstacle3D5" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree17" unique_id=449270305]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1, 0)
 height = 1.8
 vertices = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5)
@@ -238,7 +239,7 @@ affect_navigation_mesh = true
 [node name="spruce tree18" parent="NavigationRegion3D/Trees" unique_id=134300175 instance=ExtResource("4_tefeu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 10)
 
-[node name="NavigationObstacle3D4" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree18" unique_id=1566234888]
+[node name="NavigationObstacle3D5" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree18" unique_id=1566234888]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1, 0)
 height = 1.8
 vertices = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5)
@@ -247,7 +248,7 @@ affect_navigation_mesh = true
 [node name="spruce tree19" parent="NavigationRegion3D/Trees" unique_id=1739547669 instance=ExtResource("4_tefeu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 15)
 
-[node name="NavigationObstacle3D4" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree19" unique_id=690929633]
+[node name="NavigationObstacle3D5" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree19" unique_id=690929633]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1, 0)
 height = 1.8
 vertices = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5)
@@ -256,7 +257,7 @@ affect_navigation_mesh = true
 [node name="spruce tree20" parent="NavigationRegion3D/Trees" unique_id=1762038304 instance=ExtResource("4_tefeu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15)
 
-[node name="NavigationObstacle3D4" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree20" unique_id=117003990]
+[node name="NavigationObstacle3D5" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree20" unique_id=117003990]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1, 0)
 height = 1.8
 vertices = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5)
@@ -265,7 +266,7 @@ affect_navigation_mesh = true
 [node name="spruce tree21" parent="NavigationRegion3D/Trees" unique_id=829616821 instance=ExtResource("4_tefeu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 15)
 
-[node name="NavigationObstacle3D4" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree21" unique_id=1661864849]
+[node name="NavigationObstacle3D5" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree21" unique_id=1661864849]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1, 0)
 height = 1.8
 vertices = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5)
@@ -274,7 +275,7 @@ affect_navigation_mesh = true
 [node name="spruce tree22" parent="NavigationRegion3D/Trees" unique_id=2902023 instance=ExtResource("4_tefeu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 20)
 
-[node name="NavigationObstacle3D4" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree22" unique_id=2141489802]
+[node name="NavigationObstacle3D5" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree22" unique_id=2141489802]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1, 0)
 height = 1.8
 vertices = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5)
@@ -283,7 +284,7 @@ affect_navigation_mesh = true
 [node name="spruce tree23" parent="NavigationRegion3D/Trees" unique_id=98913862 instance=ExtResource("4_tefeu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
 
-[node name="NavigationObstacle3D4" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree23" unique_id=1260791961]
+[node name="NavigationObstacle3D5" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree23" unique_id=1260791961]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1, 0)
 height = 1.8
 vertices = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5)
@@ -292,7 +293,7 @@ affect_navigation_mesh = true
 [node name="spruce tree24" parent="NavigationRegion3D/Trees" unique_id=40005742 instance=ExtResource("4_tefeu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 20)
 
-[node name="NavigationObstacle3D4" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree24" unique_id=758885747]
+[node name="NavigationObstacle3D5" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree24" unique_id=758885747]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1, 0)
 height = 1.8
 vertices = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5)
@@ -301,7 +302,7 @@ affect_navigation_mesh = true
 [node name="spruce tree13" parent="NavigationRegion3D/Trees" unique_id=1433627383 instance=ExtResource("4_tefeu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 5)
 
-[node name="NavigationObstacle3D4" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree13" unique_id=1483945931]
+[node name="NavigationObstacle3D5" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree13" unique_id=1483945931]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1, 0)
 height = 1.8
 vertices = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5)
@@ -310,7 +311,7 @@ affect_navigation_mesh = true
 [node name="spruce tree14" parent="NavigationRegion3D/Trees" unique_id=1960504119 instance=ExtResource("4_tefeu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 5)
 
-[node name="NavigationObstacle3D4" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree14" unique_id=1298891324]
+[node name="NavigationObstacle3D5" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree14" unique_id=1298891324]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1, 0)
 height = 1.8
 vertices = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5)
@@ -319,7 +320,7 @@ affect_navigation_mesh = true
 [node name="spruce tree25" parent="NavigationRegion3D/Trees" unique_id=1376927049 instance=ExtResource("4_tefeu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 5)
 
-[node name="NavigationObstacle3D4" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree25" unique_id=957083380]
+[node name="NavigationObstacle3D5" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree25" unique_id=957083380]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1, 0)
 height = 1.8
 vertices = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5)
@@ -328,7 +329,7 @@ affect_navigation_mesh = true
 [node name="spruce tree26" parent="NavigationRegion3D/Trees" unique_id=804125990 instance=ExtResource("4_tefeu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 10)
 
-[node name="NavigationObstacle3D4" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree26" unique_id=4879841]
+[node name="NavigationObstacle3D5" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree26" unique_id=4879841]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1, 0)
 height = 1.8
 vertices = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5)
@@ -337,7 +338,7 @@ affect_navigation_mesh = true
 [node name="spruce tree27" parent="NavigationRegion3D/Trees" unique_id=1849538557 instance=ExtResource("4_tefeu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 10)
 
-[node name="NavigationObstacle3D4" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree27" unique_id=166492747]
+[node name="NavigationObstacle3D5" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree27" unique_id=166492747]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1, 0)
 height = 1.8
 vertices = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5)
@@ -346,7 +347,7 @@ affect_navigation_mesh = true
 [node name="spruce tree28" parent="NavigationRegion3D/Trees" unique_id=1317262712 instance=ExtResource("4_tefeu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 10)
 
-[node name="NavigationObstacle3D4" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree28" unique_id=1480355482]
+[node name="NavigationObstacle3D5" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree28" unique_id=1480355482]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1, 0)
 height = 1.8
 vertices = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5)
@@ -355,7 +356,7 @@ affect_navigation_mesh = true
 [node name="spruce tree29" parent="NavigationRegion3D/Trees" unique_id=1229224021 instance=ExtResource("4_tefeu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 15)
 
-[node name="NavigationObstacle3D4" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree29" unique_id=1150485237]
+[node name="NavigationObstacle3D5" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree29" unique_id=1150485237]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1, 0)
 height = 1.8
 vertices = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5)
@@ -364,7 +365,7 @@ affect_navigation_mesh = true
 [node name="spruce tree30" parent="NavigationRegion3D/Trees" unique_id=462106603 instance=ExtResource("4_tefeu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 15)
 
-[node name="NavigationObstacle3D4" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree30" unique_id=1877979719]
+[node name="NavigationObstacle3D5" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree30" unique_id=1877979719]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1, 0)
 height = 1.8
 vertices = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5)
@@ -373,7 +374,7 @@ affect_navigation_mesh = true
 [node name="spruce tree31" parent="NavigationRegion3D/Trees" unique_id=1298661437 instance=ExtResource("4_tefeu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 15)
 
-[node name="NavigationObstacle3D4" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree31" unique_id=2094886885]
+[node name="NavigationObstacle3D5" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree31" unique_id=2094886885]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1, 0)
 height = 1.8
 vertices = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5)
@@ -382,7 +383,7 @@ affect_navigation_mesh = true
 [node name="spruce tree32" parent="NavigationRegion3D/Trees" unique_id=805420138 instance=ExtResource("4_tefeu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 20)
 
-[node name="NavigationObstacle3D4" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree32" unique_id=771535006]
+[node name="NavigationObstacle3D5" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree32" unique_id=771535006]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1, 0)
 height = 1.8
 vertices = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5)
@@ -391,7 +392,7 @@ affect_navigation_mesh = true
 [node name="spruce tree33" parent="NavigationRegion3D/Trees" unique_id=1024107527 instance=ExtResource("4_tefeu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 20)
 
-[node name="NavigationObstacle3D4" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree33" unique_id=91240696]
+[node name="NavigationObstacle3D5" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree33" unique_id=91240696]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1, 0)
 height = 1.8
 vertices = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5)
@@ -400,7 +401,7 @@ affect_navigation_mesh = true
 [node name="spruce tree34" parent="NavigationRegion3D/Trees" unique_id=783581919 instance=ExtResource("4_tefeu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 20)
 
-[node name="NavigationObstacle3D4" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree34" unique_id=581947795]
+[node name="NavigationObstacle3D5" type="NavigationObstacle3D" parent="NavigationRegion3D/Trees/spruce tree34" unique_id=581947795]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1, 0)
 height = 1.8
 vertices = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5)
@@ -418,3 +419,6 @@ enemy_folder = NodePath("../Entities/Enemies")
 
 [node name="Prey" parent="." unique_id=699820936 instance=ExtResource("5_tbgi4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, 0)
+
+[node name="single-barrel shotgun" parent="." unique_id=2144405168 instance=ExtResource("7_o6xl0")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0.6096659, 1.0418375, -7.690979)
