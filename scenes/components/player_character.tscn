@@ -3,6 +3,11 @@
 [ext_resource type="Script" uid="uid://c28chv5vm3sq0" path="res://scripts/data/player/player_character.gd" id="1_02ohv"]
 [ext_resource type="Script" uid="uid://xroa4lmyebse" path="res://scripts/data/ui/hud.gd" id="2_5up26"]
 [ext_resource type="Shader" uid="uid://bnnj4c28yjbl3" path="res://assets/shaders/filter.gdshader" id="2_di51a"]
+[ext_resource type="Texture2D" uid="uid://t1ocy6etlnc7" path="res://assets/models/single barrel shotgun/sausage.png" id="3_n5ams"]
+[ext_resource type="PackedScene" uid="uid://bfpahaur0cgsr" path="res://assets/models/single barrel shotgun/single-barrel shotgun.blend" id="4_ooxcc"]
+[ext_resource type="LabelSettings" uid="uid://bmrktrw4ogggb" path="res://new_label_settings.tres" id="5_1x2km"]
+[ext_resource type="Script" uid="uid://cq0gfy3xwehof" path="res://scenes/components/fps.gd" id="5_8ltej"]
+[ext_resource type="Script" uid="uid://c7ylkkrooi87a" path="res://scenes/components/sprite_3d.gd" id="6_iqx2h"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tfo3t"]
 
@@ -40,13 +45,9 @@ material = SubResource("ShaderMaterial_isdno")
 flip_faces = true
 size = Vector2(2, 2)
 
-[sub_resource type="LabelSettings" id="LabelSettings_6r27q"]
-font_size = 7
-
 [node name="PlayerCharacter" type="CharacterBody3D" unique_id=766062974 groups=["player", "threat"]]
 collision_layer = 3
 script = ExtResource("1_02ohv")
-jump_velocity = 4.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=3033541]
 shape = SubResource("CapsuleShape3D_tfo3t")
@@ -70,9 +71,25 @@ visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CameraPos" unique_id=1254253471]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
-visible = false
 extra_cull_margin = 16384.0
 mesh = SubResource("QuadMesh_8ltej")
+
+[node name="single-barrel shotgun" parent="CameraPos" unique_id=592420183 instance=ExtResource("4_ooxcc")]
+transform = Transform3D(-0.3, 0, 4.5298744e-08, 0, 0.3, 0, -4.5298744e-08, 0, -0.3, 0.4, -0.3, -1.1000001)
+visible = false
+
+[node name="Sprite3D" type="Sprite3D" parent="CameraPos" unique_id=191356807]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, -0.4, -1)
+pixel_size = 0.002
+billboard = 1
+texture = ExtResource("3_n5ams")
+hframes = 12
+vframes = 6
+frame = 66
+script = ExtResource("6_iqx2h")
+
+[node name="Timer" type="Timer" parent="CameraPos/Sprite3D" unique_id=1082545083]
+wait_time = 0.1
 
 [node name="HUD" type="Control" parent="." unique_id=1544872282]
 layout_mode = 3
@@ -81,7 +98,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("2_5up26")
 
 [node name="Crosshair" type="ColorRect" parent="HUD" unique_id=1603673758]
 layout_mode = 1
@@ -98,12 +114,36 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.01666665, 1, 0, 1)
 
-[node name="Velocity" type="Label" parent="HUD" unique_id=2010146243]
+[node name="Labels" type="Control" parent="HUD" unique_id=1731157780]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_5up26")
+
+[node name="Velocity" type="Label" parent="HUD/Labels" unique_id=2010146243]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 text = "vel:"
-label_settings = SubResource("LabelSettings_6r27q")
+label_settings = ExtResource("5_1x2km")
+
+[node name="HP" type="Label" parent="HUD/Labels" unique_id=187789398]
+layout_mode = 0
+offset_top = 157.0
+offset_right = 40.0
+offset_bottom = 180.0
+text = "HP:"
+label_settings = ExtResource("5_1x2km")
+
+[node name="FPS" type="Label" parent="HUD" unique_id=1818670173]
+layout_mode = 0
+offset_left = 172.0
+offset_right = 320.0
+offset_bottom = 23.0
+label_settings = ExtResource("5_1x2km")
+horizontal_alignment = 2
+vertical_alignment = 1
+script = ExtResource("5_8ltej")
 
 [node name="JumpBuffer" type="Timer" parent="." unique_id=1601547242]
 wait_time = 0.2
@@ -122,3 +162,5 @@ one_shot = true
 [node name="Action" type="Node" parent="StateMachine" unique_id=1749506693]
 
 [node name="Forced" type="Node" parent="StateMachine" unique_id=18579804]
+
+[connection signal="timeout" from="CameraPos/Sprite3D/Timer" to="CameraPos/Sprite3D" method="_on_timer_timeout"]
