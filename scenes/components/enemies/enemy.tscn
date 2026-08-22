@@ -2,12 +2,17 @@
 
 [ext_resource type="Script" uid="uid://chaj3bupyxnry" path="res://scripts/enemy.gd" id="1_njuet"]
 [ext_resource type="Script" uid="uid://cqnn7e3i1nldw" path="res://scripts/data/components/hitbox.gd" id="2_w2lu4"]
+[ext_resource type="PackedScene" uid="uid://cal6gpqijsoxf" path="res://assets/models/placeholder monster/placeholder monster.blend" id="3_7djco"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8tegq"]
 albedo_color = Color(1, 0, 0, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_7p1mj"]
 material = SubResource("StandardMaterial3D_8tegq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7djco"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_njuet"]
 size = Vector3(1.7, 2, 1.1)
@@ -27,9 +32,11 @@ one_shot = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1625010788]
 mesh = SubResource("CapsuleMesh_7p1mj")
+surface_material_override/0 = SubResource("StandardMaterial3D_7djco")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D" unique_id=871355223]
 transform = Transform3D(1, 0, 0, 0, 0.3, 0, 0, 0, 1, 0, 0.6, 0.39999998)
+visible = false
 mesh = SubResource("CapsuleMesh_7p1mj")
 
 [node name="HurtBoxComponent" type="Area3D" parent="MeshInstance3D" unique_id=972576393]
@@ -43,6 +50,9 @@ damage_value = 2
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="MeshInstance3D/HurtBoxComponent" unique_id=868423186]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.099999964, 0.050000012)
 shape = SubResource("BoxShape3D_njuet")
+
+[node name="placeholder monster" parent="MeshInstance3D" unique_id=666325320 instance=ExtResource("3_7djco")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.14638889, 1.2824409, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1671497314]
 shape = SubResource("CapsuleShape3D_md0e3")
