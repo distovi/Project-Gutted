@@ -25,7 +25,7 @@ func _physics_process(delta: float) -> void:
 			var target_position = global_position + direction_away * distance
 			navi_agent3d.set_target_position(target_position)
 	else:
-		if wander_timer.is_stopped() and navi_agent3d.is_navigation_finished():
+		if wander_timer.is_stopped():
 			wander_timer.start()
 	var direction = get_direction()
 	rotate_to_target(delta)

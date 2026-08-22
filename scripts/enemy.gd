@@ -2,6 +2,7 @@ extends MoveableEntity
 
 var player_inside: bool = false
 var player
+var player_attack: bool = false
 
 func _ready() -> void:
 	model = $MeshInstance3D

@@ -1,12 +1,16 @@
 [gd_scene format=3 uid="uid://1kgm8sv0k68c"]
 
 [ext_resource type="Script" uid="uid://chaj3bupyxnry" path="res://scripts/enemy.gd" id="1_njuet"]
+[ext_resource type="Script" uid="uid://cqnn7e3i1nldw" path="res://scripts/data/components/hitbox.gd" id="2_w2lu4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8tegq"]
 albedo_color = Color(1, 0, 0, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_7p1mj"]
 material = SubResource("StandardMaterial3D_8tegq")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_njuet"]
+size = Vector3(1.7, 2, 1.1)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_md0e3"]
 
@@ -19,6 +23,7 @@ script = ExtResource("1_njuet")
 
 [node name="WanderTimer" type="Timer" parent="." unique_id=17996119]
 wait_time = 5.0
+one_shot = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1625010788]
 mesh = SubResource("CapsuleMesh_7p1mj")
@@ -27,20 +32,35 @@ mesh = SubResource("CapsuleMesh_7p1mj")
 transform = Transform3D(1, 0, 0, 0, 0.3, 0, 0, 0, 1, 0, 0.6, 0.39999998)
 mesh = SubResource("CapsuleMesh_7p1mj")
 
+[node name="HurtBoxComponent" type="Area3D" parent="MeshInstance3D" unique_id=972576393]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.7)
+collision_layer = 256
+collision_mask = 2
+input_ray_pickable = false
+script = ExtResource("2_w2lu4")
+damage_value = 2
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="MeshInstance3D/HurtBoxComponent" unique_id=868423186]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.099999964, 0.050000012)
+shape = SubResource("BoxShape3D_njuet")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1671497314]
 shape = SubResource("CapsuleShape3D_md0e3")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1218836878]
 target_desired_distance = 0.1
 
-[node name="Area3D" type="Area3D" parent="." unique_id=463950309]
+[node name="SightLimitHitbox" type="Area3D" parent="." unique_id=463950309]
 collision_layer = 256
-collision_mask = 258
+collision_mask = 2
+collision_priority = 2.0
 input_ray_pickable = false
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D" unique_id=1909436460]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="SightLimitHitbox" unique_id=1909436460]
 shape = SubResource("SphereShape3D_7p1mj")
 
 [connection signal="timeout" from="WanderTimer" to="." method="_on_wander_timer_timeout"]
-[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
-[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
+[connection signal="body_entered" from="MeshInstance3D/HurtBoxComponent" to="MeshInstance3D/HurtBoxComponent" method="_on_hurt_box_body_entered"]
+[connection signal="body_exited" from="MeshInstance3D/HurtBoxComponent" to="MeshInstance3D/HurtBoxComponent" method="_on_hurt_box_body_exited"]
+[connection signal="body_entered" from="SightLimitHitbox" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="SightLimitHitbox" to="." method="_on_area_3d_body_exited"]

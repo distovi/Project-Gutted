@@ -44,6 +44,6 @@ spot_range = 7.0
 spot_angle = 21.11
 
 [node name="Timer" type="Timer" parent="." unique_id=1706362339]
-wait_time = 30.0
+wait_time = 20.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

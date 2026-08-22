@@ -20,7 +20,7 @@ radius = 50.0
 height = 100.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_isdno"]
-render_priority = -1
+render_priority = -4
 shader = ExtResource("2_di51a")
 shader_parameter/zNear = 0.05
 shader_parameter/zFar = 100.0
@@ -49,6 +49,15 @@ size = Vector2(2, 2)
 [node name="PlayerCharacter" type="CharacterBody3D" unique_id=766062974 groups=["player", "threat"]]
 collision_layer = 3
 script = ExtResource("1_02ohv")
+run_speed = 8
+
+[node name="HealthComponent" type="Node" parent="." unique_id=652733008]
+script = ExtResource("2_isdno")
+max_health = 10
+
+[node name="InvincibleTimer" type="Timer" parent="HealthComponent" unique_id=25587807]
+wait_time = 0.5
+one_shot = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=3033541]
 shape = SubResource("CapsuleShape3D_tfo3t")
@@ -56,8 +65,7 @@ shape = SubResource("CapsuleShape3D_tfo3t")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1268358764]
 mesh = SubResource("CapsuleMesh_02ohv")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=102278815]
-visible = false
+[node name="Fog" type="MeshInstance3D" parent="." unique_id=102278815]
 mesh = SubResource("SphereMesh_di51a")
 
 [node name="CameraPos" type="Node3D" parent="." unique_id=1098574541]
@@ -77,10 +85,10 @@ mesh = SubResource("QuadMesh_8ltej")
 
 [node name="single-barrel shotgun" parent="CameraPos" unique_id=301219307 instance=ExtResource("4_ooxcc")]
 transform = Transform3D(-0.3, 0, 4.5298744e-08, 0, 0.3, 0, -4.5298744e-08, 0, -0.3, 0.4, -0.3, -1.1000001)
-visible = false
 
 [node name="Sprite3D" type="Sprite3D" parent="CameraPos" unique_id=191356807]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, -0.4, -1)
+visible = false
 pixel_size = 0.002
 billboard = 1
 texture = ExtResource("3_n5ams")
@@ -160,11 +168,11 @@ one_shot = true
 
 [node name="Vertical" type="Node" parent="StateMachine" unique_id=795594847]
 
+[node name="Jump" type="Node" parent="StateMachine/Vertical" unique_id=1451351654]
+
 [node name="Action" type="Node" parent="StateMachine" unique_id=1749506693]
 
 [node name="Forced" type="Node" parent="StateMachine" unique_id=18579804]
 
-[node name="HealthComponent" type="Node" parent="." unique_id=652733008]
-script = ExtResource("2_isdno")
-
+[connection signal="timeout" from="HealthComponent/InvincibleTimer" to="HealthComponent" method="_on_invincible_timer_timeout"]
 [connection signal="timeout" from="CameraPos/Sprite3D/Timer" to="CameraPos/Sprite3D" method="_on_timer_timeout"]

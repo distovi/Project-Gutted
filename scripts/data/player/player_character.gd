@@ -41,6 +41,7 @@ func _input(event: InputEvent) -> void:
 		
 func _physics_process(delta: float) -> void:
 	movement(delta)
+	hud.update_text("hp", health.current_health)
 	move_and_slide()
 
 func movement(delta: float) -> void:
