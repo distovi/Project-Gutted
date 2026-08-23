@@ -66,6 +66,7 @@ shape = SubResource("CapsuleShape3D_tfo3t")
 mesh = SubResource("CapsuleMesh_02ohv")
 
 [node name="Fog" type="MeshInstance3D" parent="." unique_id=102278815]
+visible = false
 mesh = SubResource("SphereMesh_di51a")
 
 [node name="CameraPos" type="Node3D" parent="." unique_id=1098574541]
@@ -83,11 +84,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 extra_cull_margin = 16384.0
 mesh = SubResource("QuadMesh_8ltej")
 
-[node name="single-barrel shotgun" parent="CameraPos" unique_id=301219307 instance=ExtResource("4_ooxcc")]
-transform = Transform3D(-0.3, 0, 4.5298744e-08, 0, 0.3, 0, -4.5298744e-08, 0, -0.3, 0.4, -0.3, -1.1000001)
-
 [node name="Sprite3D" type="Sprite3D" parent="CameraPos" unique_id=191356807]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, -0.4, -1)
+visible = false
 pixel_size = 0.002
 billboard = 1
 texture = ExtResource("3_n5ams")
@@ -98,6 +97,12 @@ script = ExtResource("6_iqx2h")
 
 [node name="Timer" type="Timer" parent="CameraPos/Sprite3D" unique_id=1082545083]
 wait_time = 0.1
+
+[node name="GunPos" type="Node3D" parent="." unique_id=656341296]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="single-barrel shotgun" parent="GunPos" unique_id=301219307 instance=ExtResource("4_ooxcc")]
+transform = Transform3D(-0.3, 0, 4.5298744e-08, 0, 0.3, 0, -4.5298744e-08, 0, -0.3, 0.4, -0.3, -1.1000001)
 
 [node name="HUD" type="Control" parent="." unique_id=1544872282]
 layout_mode = 3

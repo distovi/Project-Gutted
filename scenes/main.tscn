@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bj106oj17374n" path="res://scenes/components/enemies/enemy_spawner.tscn" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://g0tgayxh1wj8" path="res://scenes/spruce_tree.tscn" id="4_tefeu"]
 [ext_resource type="PackedScene" uid="uid://d1m35v8dsjray" path="res://scenes/components/prey/prey.tscn" id="5_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://c7mai6rdqfl1q" path="res://scenes/components/enemies/enemy.tscn" id="7_o6xl0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sugp2"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -1162,4 +1163,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 1, -43)
 
 [node name="EnemySpawner" parent="." unique_id=2016670479 node_paths=PackedStringArray("enemy_folder") instance=ExtResource("3_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 7, 17)
+enemy_scene = ExtResource("7_o6xl0")
 enemy_folder = NodePath("../Entities/Enemies")
