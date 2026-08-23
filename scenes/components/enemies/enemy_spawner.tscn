@@ -1,7 +1,5 @@
 [gd_scene format=3 uid="uid://bj106oj17374n"]
 
-[ext_resource type="PackedScene" uid="uid://1kgm8sv0k68c" path="res://scenes/components/enemies/enemy.tscn" id="2_devoi"]
-
 [sub_resource type="GDScript" id="GDScript_bst7d"]
 script/source = "extends Node3D
 
@@ -30,7 +28,6 @@ func _on_timer_timeout() -> void:
 
 [node name="EnemySpawner" type="Node3D" unique_id=1030907601]
 script = SubResource("GDScript_bst7d")
-enemy_scene = ExtResource("2_devoi")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=669300597]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
