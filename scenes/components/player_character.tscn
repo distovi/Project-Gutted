@@ -117,7 +117,7 @@ light_energy = 0.5
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="single-barrel shotgun" parent="GunPos" unique_id=160547893 instance=ExtResource("4_ooxcc")]
-transform = Transform3D(-0.3, 0, -2.6226834e-08, 0, 0.3, 0, 2.6226834e-08, 0, -0.3, 0.18434829, -0.16135797, -0.576813)
+transform = Transform3D(-0.3, 0, -2.6226834e-08, 0, 0.3, 0, 2.6226834e-08, 0, -0.3, 0.11646938, -0.17357704, -0.6353386)
 
 [node name="Skeleton3D" parent="GunPos/single-barrel shotgun/Armature" parent_id_path=PackedInt32Array(160547893, 1188154441) index="0" unique_id=992297665]
 bones/0/rotation = Quaternion(3.246866e-22, 1, 2.9802322e-08, -7.5497894e-08)
