@@ -47,10 +47,10 @@ func _physics_process(delta: float) -> void:
 	movement(delta)
 	hud.update_text("hp", health.current_health)
 	
-	var wobble_x = 0.5 * sin(time * 0.8)
-	var wobble_y = 0.3 * cos(time * 0.6)
-	gun.rotation_degrees.y = lerpf(gun.rotation_degrees.y, camera.rotation_degrees.y + wobble_y, delta * 10)
-	gun.rotation_degrees.x = lerpf(gun.rotation_degrees.x, camera.rotation_degrees.x + wobble_x, delta * 10)
+	var wobble_x = 0.7 * sin(time * 0.8)
+	var wobble_y = 0.8 * cos(time * 0.6)
+	gun.rotation_degrees.y = lerpf(gun.rotation_degrees.y, camera.rotation_degrees.y + wobble_y, delta * 3)
+	gun.rotation_degrees.x = lerpf(gun.rotation_degrees.x, camera.rotation_degrees.x + wobble_x, delta * 3)
 	
 	move_and_slide()
 
