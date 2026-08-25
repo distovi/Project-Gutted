@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://1kgm8sv0k68c"]
+[gd_scene format=3 uid="uid://c7mai6rdqfl1q"]
 
 [ext_resource type="Script" uid="uid://chaj3bupyxnry" path="res://scripts/enemy.gd" id="1_njuet"]
 [ext_resource type="Script" uid="uid://cqnn7e3i1nldw" path="res://scripts/data/components/hitbox.gd" id="2_w2lu4"]
@@ -45,7 +45,6 @@ collision_layer = 256
 collision_mask = 2
 input_ray_pickable = false
 script = ExtResource("2_w2lu4")
-damage_value = 2
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="MeshInstance3D/HurtBoxComponent" unique_id=868423186]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.099999964, 0.050000012)
