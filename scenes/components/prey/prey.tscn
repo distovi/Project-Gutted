@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://cbqny8h2j82a" path="res://scripts/prey.gd" id="1_bhqvb"]
 [ext_resource type="PackedScene" uid="uid://b3pxpvau0b5qe" path="res://assets/models/wild hare.blend" id="2_bgu6u"]
+[ext_resource type="Script" uid="uid://cbnsdxqmulfnb" path="res://scripts/data/components/health_component.gd" id="3_yxa8f"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_md0e3"]
-radius = 0.25
-height = 1.0
+[sub_resource type="BoxShape3D" id="BoxShape3D_yxa8f"]
+size = Vector3(0.5, 0.90000004, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_7p1mj"]
 radius = 6.0
@@ -21,7 +21,8 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0.1)
 wait_time = 5.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1671497314]
-shape = SubResource("CapsuleShape3D_md0e3")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.049999982, 5.9604645e-08)
+shape = SubResource("BoxShape3D_yxa8f")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1218836878]
 
@@ -33,6 +34,16 @@ input_ray_pickable = false
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D" unique_id=1909436460]
 shape = SubResource("SphereShape3D_7p1mj")
 
+[node name="HealthComponent" type="Node" parent="." unique_id=800784944]
+script = ExtResource("3_yxa8f")
+max_health = 5
+invincibility_time = 0.1
+
+[node name="InvincibleTimer" type="Timer" parent="HealthComponent" unique_id=295690215]
+wait_time = 0.5
+one_shot = true
+
 [connection signal="timeout" from="WanderTimer" to="." method="_on_wander_timer_timeout"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
+[connection signal="timeout" from="HealthComponent/InvincibleTimer" to="HealthComponent" method="_on_invincible_timer_timeout"]

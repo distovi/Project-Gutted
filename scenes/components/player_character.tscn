@@ -81,6 +81,7 @@ shape = SubResource("CapsuleShape3D_tfo3t")
 mesh = SubResource("CapsuleMesh_02ohv")
 
 [node name="Fog" type="MeshInstance3D" parent="." unique_id=102278815]
+visible = false
 mesh = SubResource("SphereMesh_di51a")
 
 [node name="CameraPos" type="Node3D" parent="." unique_id=1098574541]
@@ -98,6 +99,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 extra_cull_margin = 16384.0
 mesh = SubResource("QuadMesh_8ltej")
 
+<<<<<<< HEAD
 [node name="single-barrel shotgun" parent="CameraPos" unique_id=163140703 instance=ExtResource("4_ooxcc")]
 transform = Transform3D(-0.2, 0, 3.019916e-08, 0, 0.2, 0, -3.019916e-08, 0, -0.2, 0.107079476, -0.17608297, -0.3074093)
 
@@ -108,6 +110,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_nhpx2")
 [node name="RightHand" parent="CameraPos/single-barrel shotgun" index="7" unique_id=1570804977]
 surface_material_override/0 = SubResource("StandardMaterial3D_dkqrv")
 
+=======
+>>>>>>> d766d2d624a4981182c3d3951ea93099efaf069b
 [node name="Sprite3D" type="Sprite3D" parent="CameraPos" unique_id=191356807]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, -0.4, -1)
 visible = false
@@ -122,10 +126,18 @@ script = ExtResource("6_iqx2h")
 [node name="Timer" type="Timer" parent="CameraPos/Sprite3D" unique_id=1082545083]
 wait_time = 0.1
 
+<<<<<<< HEAD
 [node name="OmniLight3D" type="OmniLight3D" parent="CameraPos" unique_id=2058931996]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23438472, -0.07955557, -0.21576461)
 visible = false
 light_energy = 0.5
+=======
+[node name="GunPos" type="Node3D" parent="." unique_id=656341296]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="single-barrel shotgun" parent="GunPos" unique_id=301219307 instance=ExtResource("4_ooxcc")]
+transform = Transform3D(-0.3, 0, 4.5298744e-08, 0, 0.3, 0, -4.5298744e-08, 0, -0.3, 0.4, -0.3, -1.1000001)
+>>>>>>> d766d2d624a4981182c3d3951ea93099efaf069b
 
 [node name="HUD" type="Control" parent="." unique_id=1544872282]
 layout_mode = 3
