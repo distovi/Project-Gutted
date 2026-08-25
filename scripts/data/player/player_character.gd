@@ -5,7 +5,6 @@ class_name Player extends CharacterBody3D
 @onready var jump_buffer = $JumpBuffer
 @onready var collision = $CollisionShape3D
 @onready var health = $HealthComponent
-@onready var gun = $GunPos
 
 @export var walk_speed = 4
 @export var run_speed = 12
@@ -23,8 +22,6 @@ var jump_velocity = 4.5
 
 var desired_velocity: Vector3
 
-var time: float = 0
-
 func _ready() -> void:
 	health.died.connect(_on_died)
 	health.health_changed.connect(_on_health_changed)
@@ -38,20 +35,13 @@ func _input(event: InputEvent) -> void:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		return
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-		camera.rotation_degrees.y -= event.relative.x
+		rotation_degrees.y -= event.relative.x
 		camera.rotation_degrees.x -= event.relative.y
-		camera.rotation_degrees.x = clamp(camera.rotation_degrees.x, -89, 89)
+		camera.rotation_degrees.x = clamp(camera.rotation_degrees.x, -90, 90)
 		
 func _physics_process(delta: float) -> void:
-	time += delta
 	movement(delta)
 	hud.update_text("hp", health.current_health)
-	
-	var wobble_x = 0.5 * sin(time * 0.8)
-	var wobble_y = 0.3 * cos(time * 0.6)
-	gun.rotation_degrees.y = lerpf(gun.rotation_degrees.y, camera.rotation_degrees.y + wobble_y, delta * 10)
-	gun.rotation_degrees.x = lerpf(gun.rotation_degrees.x, camera.rotation_degrees.x + wobble_x, delta * 10)
-	
 	move_and_slide()
 
 func movement(delta: float) -> void:

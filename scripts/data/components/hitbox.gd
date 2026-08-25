@@ -1,6 +1,6 @@
 extends Area3D
 
-var damage_value: int = 10
+@export var damage_value: int = 10
 var health_component
 
 var inside := false
@@ -14,6 +14,7 @@ func _on_hurt_box_body_entered(body: Node3D) -> void:
 		inside = true
 		health_component.damage(damage_value)
 	else:
+		print("No HealthComponent found on: ", body.name)
 		return
 
 

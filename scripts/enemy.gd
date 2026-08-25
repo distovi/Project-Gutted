@@ -3,10 +3,8 @@ extends MoveableEntity
 var player_inside: bool = false
 var player
 var player_attack: bool = false
-@export var attack_value: int = 2
 
 func _ready() -> void:
-	$MeshInstance3D/HurtBoxComponent.damage_value = attack_value
 	model = $MeshInstance3D
 	player = get_tree().get_first_node_in_group("player")
 	entity_setup()
