@@ -7,7 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://t1ocy6etlnc7" path="res://assets/models/single barrel shotgun/sausage.png" id="3_n5ams"]
 [ext_resource type="PackedScene" uid="uid://bfpahaur0cgsr" path="res://assets/models/single barrel shotgun/single-barrel shotgun.blend" id="4_ooxcc"]
 [ext_resource type="LabelSettings" uid="uid://bmrktrw4ogggb" path="res://new_label_settings.tres" id="5_1x2km"]
+[ext_resource type="Texture2D" uid="uid://b2lqbeyrbsqu3" path="res://assets/models/hands/left_hand_holding_shotgun v2.png" id="5_7kswj"]
 [ext_resource type="Script" uid="uid://cq0gfy3xwehof" path="res://scenes/components/fps.gd" id="5_8ltej"]
+[ext_resource type="Texture2D" uid="uid://7yw1f4lurjxe" path="res://assets/models/hands/right_hand_holding_shotgun.png" id="6_723u5"]
 [ext_resource type="Script" uid="uid://c7ylkkrooi87a" path="res://scenes/components/sprite_3d.gd" id="6_iqx2h"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tfo3t"]
@@ -46,6 +48,19 @@ material = SubResource("ShaderMaterial_isdno")
 flip_faces = true
 size = Vector2(2, 2)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nhpx2"]
+transparency = 2
+alpha_scissor_threshold = 0.045
+alpha_antialiasing_mode = 1
+alpha_antialiasing_edge = 0.0
+albedo_texture = ExtResource("5_7kswj")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dkqrv"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("6_723u5")
+
 [node name="PlayerCharacter" type="CharacterBody3D" unique_id=766062974 groups=["player", "threat"]]
 collision_layer = 3
 script = ExtResource("1_02ohv")
@@ -83,11 +98,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 extra_cull_margin = 16384.0
 mesh = SubResource("QuadMesh_8ltej")
 
-[node name="single-barrel shotgun" parent="CameraPos" unique_id=301219307 instance=ExtResource("4_ooxcc")]
-transform = Transform3D(-0.3, 0, 4.5298744e-08, 0, 0.3, 0, -4.5298744e-08, 0, -0.3, 0.4, -0.3, -1.1000001)
+[node name="single-barrel shotgun" parent="CameraPos" unique_id=163140703 instance=ExtResource("4_ooxcc")]
+transform = Transform3D(-0.2, 0, 3.019916e-08, 0, 0.2, 0, -3.019916e-08, 0, -0.2, 0.107079476, -0.17608297, -0.3074093)
+
+[node name="LeftHand" parent="CameraPos/single-barrel shotgun" index="6" unique_id=1568755724]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.083060555, 0, 8.881784e-16)
+surface_material_override/0 = SubResource("StandardMaterial3D_nhpx2")
+
+[node name="RightHand" parent="CameraPos/single-barrel shotgun" index="7" unique_id=1570804977]
+surface_material_override/0 = SubResource("StandardMaterial3D_dkqrv")
 
 [node name="Sprite3D" type="Sprite3D" parent="CameraPos" unique_id=191356807]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, -0.4, -1)
+visible = false
 pixel_size = 0.002
 billboard = 1
 texture = ExtResource("3_n5ams")
@@ -98,6 +121,11 @@ script = ExtResource("6_iqx2h")
 
 [node name="Timer" type="Timer" parent="CameraPos/Sprite3D" unique_id=1082545083]
 wait_time = 0.1
+
+[node name="OmniLight3D" type="OmniLight3D" parent="CameraPos" unique_id=2058931996]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23438472, -0.07955557, -0.21576461)
+visible = false
+light_energy = 0.5
 
 [node name="HUD" type="Control" parent="." unique_id=1544872282]
 layout_mode = 3
@@ -157,8 +185,6 @@ script = ExtResource("5_8ltej")
 wait_time = 0.2
 one_shot = true
 
-[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=2058931996]
-
 [node name="StateMachine" type="Node" parent="." unique_id=319729613]
 
 [node name="Movement" type="Node" parent="StateMachine" unique_id=879369582]
@@ -175,3 +201,5 @@ one_shot = true
 
 [connection signal="timeout" from="HealthComponent/InvincibleTimer" to="HealthComponent" method="_on_invincible_timer_timeout"]
 [connection signal="timeout" from="CameraPos/Sprite3D/Timer" to="CameraPos/Sprite3D" method="_on_timer_timeout"]
+
+[editable path="CameraPos/single-barrel shotgun"]
