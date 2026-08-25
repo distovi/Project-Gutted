@@ -17,8 +17,10 @@ sky_material = SubResource("ProceduralSkyMaterial_sugp2")
 
 [sub_resource type="Environment" id="Environment_tbgi4"]
 background_mode = 2
+background_energy_multiplier = 1.5
 sky = SubResource("Sky_tefeu")
 tonemap_mode = 2
+ssao_intensity = 12.56
 fog_enabled = true
 fog_density = 0.1
 
@@ -45,7 +47,8 @@ player_scene = ExtResource("2_jyhfs")
 entity_folder = NodePath("../Entities")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=11247759]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 9, 0)
+transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, -0.9999999, 0, 0.9999999, -4.3711385e-08, -0.35940266, 9, 0)
+light_energy = 0.5
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=638283351]
 navigation_mesh = SubResource("NavigationMesh_sugp2")
