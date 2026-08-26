@@ -4,11 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://c3s8w5xlxkg4n"
-valid=false
+path="res://.godot/imported/single-barrel shotgun V2.blend-33451636f58f88a71d7ed873fbe54dfb.scn"
 
 [deps]
 
 source_file="res://assets/models/single barrel shotgun/single-barrel shotgun V2.blend"
+dest_files=["res://.godot/imported/single-barrel shotgun V2.blend-33451636f58f88a71d7ed873fbe54dfb.scn"]
 
 [params]
 

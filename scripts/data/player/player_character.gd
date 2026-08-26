@@ -46,6 +46,14 @@ func _physics_process(delta: float) -> void:
 	time += delta
 	movement(delta)
 	hud.update_text("hp", health.current_health)
+	if Input.is_action_just_pressed("LMC"):
+		if $"GunPos/single-barrel shotgun/AnimationPlayer".speed_scale == 2:
+			$"GunPos/single-barrel shotgun/AnimationPlayer".speed_scale = 1
+		$"GunPos/single-barrel shotgun/AnimationPlayer".stop()
+		$"GunPos/single-barrel shotgun/AnimationPlayer".play("Shoot")
+	if Input.is_action_just_pressed("Reload"):
+		#$"GunPos/single-barrel shotgun/AnimationPlayer".speed_scale = 2
+		$"GunPos/single-barrel shotgun/AnimationPlayer".play("Reload")
 	
 	var wobble_x = 0.7 * sin(time * 0.8)
 	var wobble_y = 0.8 * cos(time * 0.6)
