@@ -40,3 +40,10 @@ func is_alive() -> bool:
 
 func _on_invincible_timer_timeout() -> void:
 	is_invincible = false
+
+func connect_to_parent_signals():
+	var parent = get_parent()
+	if parent and parent.has_method("_on_health_changed"):
+		health_changed.connect(parent._on_health_changed)
+	if parent and parent.has_method("_on_died"):
+		died.connect(parent._on_died)

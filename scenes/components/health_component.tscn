@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dhu8jp7t5bj6x"]
+
+[ext_resource type="Script" uid="uid://cbnsdxqmulfnb" path="res://scripts/data/components/health_component.gd" id="1_2wcl1"]
+
+[node name="HealthComponent" type="Node" unique_id=2020906022]
+script = ExtResource("1_2wcl1")
+max_health = 10
+
+[node name="InvincibleTimer" type="Timer" parent="." unique_id=558835022]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="InvincibleTimer" to="." method="_on_invincible_timer_timeout"]

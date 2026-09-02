@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://chaj3bupyxnry" path="res://scripts/enemy.gd" id="1_njuet"]
 [ext_resource type="Script" uid="uid://cqnn7e3i1nldw" path="res://scripts/data/components/hitbox.gd" id="2_w2lu4"]
 [ext_resource type="PackedScene" uid="uid://cal6gpqijsoxf" path="res://assets/models/placeholder monster/placeholder monster.blend" id="3_7djco"]
+[ext_resource type="PackedScene" uid="uid://dhu8jp7t5bj6x" path="res://scenes/components/health_component.tscn" id="4_l3xnh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8tegq"]
 albedo_color = Color(1, 0, 0, 1)
@@ -67,6 +68,9 @@ input_ray_pickable = false
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="SightLimitHitbox" unique_id=1909436460]
 shape = SubResource("SphereShape3D_7p1mj")
+
+[node name="HealthComponent" parent="." unique_id=2020906022 instance=ExtResource("4_l3xnh")]
+max_health = 20
 
 [connection signal="timeout" from="WanderTimer" to="." method="_on_wander_timer_timeout"]
 [connection signal="body_entered" from="MeshInstance3D/HurtBoxComponent" to="MeshInstance3D/HurtBoxComponent" method="_on_hurt_box_body_entered"]

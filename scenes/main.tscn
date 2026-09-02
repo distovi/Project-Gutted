@@ -1152,19 +1152,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 45)
 
 [node name="Prey" type="Node3D" parent="Entities" unique_id=1163759348]
 
-[node name="Prey2" parent="Entities/Prey" unique_id=699820936 instance=ExtResource("5_tbgi4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 1, -18)
-
-[node name="Prey3" parent="Entities/Prey" unique_id=476364386 instance=ExtResource("5_tbgi4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 1, -23)
-
-[node name="Prey4" parent="Entities/Prey" unique_id=1801364562 instance=ExtResource("5_tbgi4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 1, -33)
-
-[node name="Prey5" parent="Entities/Prey" unique_id=1332177663 instance=ExtResource("5_tbgi4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 1, -43)
-
-[node name="EnemySpawner" parent="." unique_id=2016670479 node_paths=PackedStringArray("enemy_folder") instance=ExtResource("3_sugp2")]
+[node name="EnemySpawner" parent="." unique_id=2016670479 node_paths=PackedStringArray("entity_folder") instance=ExtResource("3_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 7, 17)
-enemy_scene = ExtResource("7_o6xl0")
-enemy_folder = NodePath("../Entities/Enemies")
+entity_scene = ExtResource("7_o6xl0")
+entity_folder = NodePath("../Entities/Enemies")
+light_color = Color(1, 0, 0, 1)
+
+[node name="PreySpawner" parent="." unique_id=209413143 node_paths=PackedStringArray("entity_folder") instance=ExtResource("3_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 7, -14)
+entity_scene = ExtResource("5_tbgi4")
+entity_folder = NodePath("../Entities/Prey")
+light_color = Color(0, 1, 0.13333344, 1)
+spawn_time = 5.0

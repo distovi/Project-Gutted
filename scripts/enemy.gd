@@ -9,6 +9,7 @@ func _ready() -> void:
 	$MeshInstance3D/HurtBoxComponent.damage_value = attack_value
 	model = $MeshInstance3D
 	player = get_tree().get_first_node_in_group("player")
+	$HealthComponent.connect_to_parent_signals()
 	entity_setup()
 
 func _physics_process(delta: float) -> void:
@@ -31,3 +32,6 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 func _on_area_3d_body_exited(body: Node3D) -> void:
 	if body == player:
 		player_inside = false
+
+func _on_died() -> void:
+	queue_free()

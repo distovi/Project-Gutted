@@ -24,10 +24,10 @@ var jump_velocity = 4.5
 var desired_velocity: Vector3
 
 var time: float = 0
+var ammo_inside: bool = true
 
 func _ready() -> void:
-	health.died.connect(_on_died)
-	health.health_changed.connect(_on_health_changed)
+	health.connect_to_parent_signals()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _input(event: InputEvent) -> void:
@@ -46,14 +46,23 @@ func _physics_process(delta: float) -> void:
 	time += delta
 	movement(delta)
 	hud.update_text("hp", health.current_health)
-	if Input.is_action_just_pressed("LMC"):
-		if $"GunPos/single-barrel shotgun/AnimationPlayer".speed_scale == 2:
-			$"GunPos/single-barrel shotgun/AnimationPlayer".speed_scale = 1
+	if Input.is_action_just_pressed("LMC") and ammo_inside:
 		$"GunPos/single-barrel shotgun/AnimationPlayer".stop()
 		$"GunPos/single-barrel shotgun/AnimationPlayer".play("Shoot")
-	if Input.is_action_just_pressed("Reload"):
+		ammo_inside = false
+		var hp_component = check_ray(10).get("collider")
+		if hp_component == null:
+			return
+		if hp_component.get_node_or_null("HealthComponent") != null:
+			var health_component = hp_component.get_node("HealthComponent") as HealthComponent
+			health_component.damage(10)
+		else:
+			return
+
+	if Input.is_action_just_pressed("Reload") and !ammo_inside:
 		#$"GunPos/single-barrel shotgun/AnimationPlayer".speed_scale = 2
 		$"GunPos/single-barrel shotgun/AnimationPlayer".play("Reload")
+		ammo_inside = true
 	
 	var wobble_x = 0.7 * sin(time * 0.8)
 	var wobble_y = 0.8 * cos(time * 0.6)
@@ -109,3 +118,16 @@ func _on_health_changed(new_health: int) -> void:
 
 func _on_heal(new_health: int):
 	pass
+func check_ray(length: int):
+	var cam = $"CameraPos/Camera3D"
+	var space_state = get_world_3d().direct_space_state
+	var mousepos = get_viewport().get_mouse_position()
+	var origin = cam.project_ray_origin(mousepos)
+	var end = origin + cam.project_ray_normal(mousepos) * length
+	var query = PhysicsRayQueryParameters3D.create(origin, end)
+	query.exclude = [self]
+	query.collide_with_areas = false
+	query.collide_with_bodies = true
+	query.collision_mask = 2
+	var result = space_state.intersect_ray(query)
+	return result

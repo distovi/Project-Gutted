@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://c28chv5vm3sq0" path="res://scripts/data/player/player_character.gd" id="1_02ohv"]
 [ext_resource type="Script" uid="uid://xroa4lmyebse" path="res://scripts/data/ui/hud.gd" id="2_5up26"]
-[ext_resource type="Shader" uid="uid://bnnj4c28yjbl3" path="res://assets/shaders/filter.gdshader" id="2_di51a"]
-[ext_resource type="Script" uid="uid://cbnsdxqmulfnb" path="res://scripts/data/components/health_component.gd" id="2_isdno"]
+[ext_resource type="PackedScene" uid="uid://dhu8jp7t5bj6x" path="res://scenes/components/health_component.tscn" id="2_7kswj"]
+[ext_resource type="Material" path="res://filter_material.tres" id="3_7kswj"]
 [ext_resource type="Texture2D" uid="uid://t1ocy6etlnc7" path="res://assets/models/single barrel shotgun/sausage.png" id="3_n5ams"]
 [ext_resource type="PackedScene" uid="uid://bfpahaur0cgsr" path="res://assets/models/single barrel shotgun/single-barrel shotgun.blend" id="4_ooxcc"]
 [ext_resource type="LabelSettings" uid="uid://bmrktrw4ogggb" path="res://new_label_settings.tres" id="5_1x2km"]
@@ -21,30 +21,8 @@ flip_faces = true
 radius = 50.0
 height = 100.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_isdno"]
-render_priority = -4
-shader = ExtResource("2_di51a")
-shader_parameter/zNear = 0.05
-shader_parameter/zFar = 100.0
-shader_parameter/enable_outline = false
-shader_parameter/outline_color = Color(0, 0, 0, 1)
-shader_parameter/outline_thickness = 1.0
-shader_parameter/enable_color_limit = true
-shader_parameter/color_levels = 32
-shader_parameter/enable_color_palette = false
-shader_parameter/color1 = Color(1, 0.925, 0.839, 1)
-shader_parameter/color2 = Color(1, 0.831, 0.639, 1)
-shader_parameter/color3 = Color(1, 0.667, 0.369, 1)
-shader_parameter/color4 = Color(0.816, 0.506, 0.349, 1)
-shader_parameter/color5 = Color(0.553, 0.412, 0.478, 1)
-shader_parameter/color6 = Color(0.329, 0.306, 0.408, 1)
-shader_parameter/color7 = Color(0.125, 0.236, 0.337, 1)
-shader_parameter/color8 = Color(0.05, 0.169, 0.271, 1)
-shader_parameter/enable_dithering = false
-shader_parameter/dither_strength = 0.138000006555
-
 [sub_resource type="QuadMesh" id="QuadMesh_8ltej"]
-material = SubResource("ShaderMaterial_isdno")
+material = ExtResource("3_7kswj")
 flip_faces = true
 size = Vector2(2, 2)
 
@@ -61,13 +39,7 @@ collision_layer = 3
 script = ExtResource("1_02ohv")
 run_speed = 8
 
-[node name="HealthComponent" type="Node" parent="." unique_id=652733008]
-script = ExtResource("2_isdno")
-max_health = 10
-
-[node name="InvincibleTimer" type="Timer" parent="HealthComponent" unique_id=25587807]
-wait_time = 0.5
-one_shot = true
+[node name="HealthComponent" parent="." unique_id=2020906022 instance=ExtResource("2_7kswj")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=3033541]
 shape = SubResource("CapsuleShape3D_tfo3t")
@@ -87,9 +59,10 @@ fov = 90.0
 
 [node name="RayCast3D" type="RayCast3D" parent="CameraPos" unique_id=1178474908]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
-visible = false
+enabled = false
+target_position = Vector3(0, -10, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CameraPos" unique_id=1254253471]
+[node name="Filter" type="MeshInstance3D" parent="CameraPos" unique_id=1254253471]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.0000463)
 extra_cull_margin = 16384.0
 mesh = SubResource("QuadMesh_8ltej")
@@ -119,66 +92,68 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 [node name="single-barrel shotgun" parent="GunPos" unique_id=160547893 instance=ExtResource("4_ooxcc")]
 transform = Transform3D(-0.3, 0, -2.6226834e-08, 0, 0.3, 0, 2.6226834e-08, 0, -0.3, 0.11646938, -0.17357704, -0.7353386)
 
-[node name="Skeleton3D" parent="GunPos/single-barrel shotgun/Armature" parent_id_path=PackedInt32Array(160547893, 1592391635) index="0" unique_id=441814490]
+[node name="Skeleton3D" parent="GunPos/single-barrel shotgun/Armature" parent_id_path=PackedInt32Array(160547893, 14051054) index="0" unique_id=1668779991]
 bones/0/rotation = Quaternion(3.246866e-22, 1, 2.9802322e-08, -7.5497894e-08)
-bones/1/position = Vector3(6.134457e-07, 1.0215436, -4.062668)
-bones/1/rotation = Quaternion(-0.15170151, 0.9884263, -9.610264e-09, 8.3710674e-08)
-bones/2/position = Vector3(0.13160856, -0.033105507, 0.1943448)
-bones/2/rotation = Quaternion(-6.883939e-08, -6.883939e-08, -0.7071068, 0.7071068)
-bones/3/rotation = Quaternion(-0.3695058, 0.09977942, 0.6751621, 0.6306074)
-bones/4/position = Vector3(-0.097431675, -0.13160856, -0.8895115)
-bones/4/rotation = Quaternion(1.3708772e-07, 1.3708774e-07, 0.7071068, 0.7071068)
-bones/5/position = Vector3(-0.012826641, 0.017228141, -0.11703631)
-bones/5/rotation = Quaternion(0.7071068, -2.8378975e-07, -2.8378975e-07, 0.7071068)
-bones/6/position = Vector3(0.1081359, 0.77558374, -4.677907)
-bones/6/rotation = Quaternion(-0.15170151, 0.98842645, -9.61026e-09, 8.371068e-08)
-bones/7/position = Vector3(0.33314043, 0.8792635, -2.5285358)
-bones/7/rotation = Quaternion(-0.15170151, 0.98842645, -9.6102655e-09, 8.371069e-08)
-bones/9/position = Vector3(1.7845005, 0.17051864, -0.6235608)
-bones/9/rotation = Quaternion(-0.22014512, 0.7641578, -0.549935, 0.25528517)
-bones/11/position = Vector3(0.4268685, 0.13360989, -2.8838034)
-bones/11/rotation = Quaternion(-0.27725554, 0.90983486, -0.24833494, 0.18346566)
-bones/11/scale = Vector3(0.98883146, 0.9888312, 0.9888313)
+bones/1/position = Vector3(-0.011236812, 1.0140488, -4.0618234)
+bones/1/rotation = Quaternion(-0.15268303, 0.9882676, 0.0009506422, -0.003766584)
+bones/2/position = Vector3(0.13160856, -0.033105504, 0.19434474)
+bones/2/rotation = Quaternion(-6.877251e-08, -6.88857e-08, -0.7071068, 0.7071068)
+bones/3/rotation = Quaternion(-0.12742999, -0.12743004, 0.6955297, 0.69552976)
+bones/4/position = Vector3(-0.06902471, -0.124402985, -0.8713006)
+bones/4/rotation = Quaternion(0.2884915, 0.29807204, 0.6560923, 0.6304512)
+bones/5/position = Vector3(-0.01282664, 0.017228156, -0.11703632)
+bones/5/rotation = Quaternion(0.7071068, -2.8392643e-07, -2.8397787e-07, 0.7071068)
+bones/6/position = Vector3(0.09256778, 0.7686987, -4.678105)
+bones/6/rotation = Quaternion(-0.15342458, 0.988158, 0.00068916025, -0.0020468892)
+bones/7/position = Vector3(0.3340418, 0.87131447, -2.5304196)
+bones/7/rotation = Quaternion(-0.15268303, 0.9882676, 0.0009506422, -0.0037665835)
+bones/9/position = Vector3(-1.1743164, 0.6687353, 1.1703995)
+bones/9/rotation = Quaternion(-4.2351647e-22, 1, -3.5527137e-15, 7.54979e-08)
+bones/11/position = Vector3(0.9557989, 0.6687353, 1.1703998)
+bones/11/rotation = Quaternion(-2.5403113e-22, 1, 3.24658e-16, 7.54979e-08)
+bones/11/scale = Vector3(0.9162684, 0.9162685, 0.9162685)
 
-[node name="Switch" parent="GunPos/single-barrel shotgun/Armature/Skeleton3D" index="0" unique_id=1251854789]
-transform = Transform3D(0.72147465, 0.101225376, 0.68500215, -0.29850373, 0.93808246, 0.17577326, -0.6247958, -0.3312917, 0.707019, 0.0011867359, -0.18123934, -0.46654677)
+[node name="Switch" parent="GunPos/single-barrel shotgun/Armature/Skeleton3D" index="0" unique_id=1175389673]
+transform = Transform3D(0.9533474, 0.27943254, 0.11422016, -0.30179048, 0.8911901, 0.3386768, -0.007154579, -0.35734734, 0.93394417, 0.0055868477, -0.1893814, -0.4673766)
 
-[node name="BackTrigger" parent="GunPos/single-barrel shotgun/Armature/Skeleton3D" index="1" unique_id=1785681299]
-transform = Transform3D(0.9539734, 0.29989156, -7.5293386e-08, -0.29989147, 0.953973, -2.3735525e-07, 6.469776e-10, 2.4901044e-07, 0.99999994, 0.019290835, -0.12364906, -0.27683294)
+[node name="BackTrigger" parent="GunPos/single-barrel shotgun/Armature/Skeleton3D" index="1" unique_id=1532250044]
+transform = Transform3D(0.96430504, 0.17749697, -0.19649567, -0.26475453, 0.6335421, -0.7269998, -0.004551996, 0.753073, 0.65792114, 0.023709953, -0.16093281, -0.25960642)
 
-[node name="Hinge" parent="GunPos/single-barrel shotgun/Armature/Skeleton3D" index="2" unique_id=1869986822]
-transform = Transform3D(-0.29989156, 0.9539734, 4.0987352e-08, -0.953973, -0.29989147, 1.3254076e-07, 1.3873218e-07, 6.469918e-10, 0.99999994, 0.11562301, -0.25606441, 0.6126785)
+[node name="Hinge" parent="GunPos/single-barrel shotgun/Armature/Skeleton3D" index="2" unique_id=1679317423]
+transform = Transform3D(-0.30177623, 0.95334744, 0.007735289, -0.9533737, -0.30179045, 0.00072891667, 0.003029348, -0.007154654, 0.9999698, 0.12821896, -0.26364768, 0.6109868)
 
-[node name="ShotgunShellBarrel" parent="GunPos/single-barrel shotgun/Armature/Skeleton3D" index="3" unique_id=1189479030]
-transform = Transform3D(0.9539732, -1.7403693e-08, -0.29989234, -0.29989225, -5.3204648e-08, -0.95397276, 6.469469e-10, 0.99999994, -5.5975008e-08, -0.0070696985, -0.16473258, 0.30129746)
+[node name="ShotgunShellBarrel" parent="GunPos/single-barrel shotgun/Armature/Skeleton3D" index="3" unique_id=2137725279]
+transform = Transform3D(0.9533472, 0.0077352305, -0.301777, -0.30179122, 0.00072873104, -0.95337343, -0.0071546515, 0.9999698, 0.0030291593, 0.0033029262, -0.17229864, 0.3004961)
 
-[node name="GunMain" parent="GunPos/single-barrel shotgun/Armature/Skeleton3D" index="4" unique_id=757240654]
-transform = Transform3D(0.9539734, 0.29989156, -1.7403693e-08, -0.29989147, 0.953973, -5.3204648e-08, 6.469918e-10, 5.5975008e-08, 0.99999994, -5.684342e-14, -0.18501437, 0.41833377)
+[node name="GunMain" parent="GunPos/single-barrel shotgun/Armature/Skeleton3D" index="4" unique_id=1858351541]
+transform = Transform3D(0.95334744, 0.30177623, 0.0077352305, -0.30179045, 0.9533737, 0.00072873104, -0.007154654, -0.0030291534, 0.9999698, 0.011237426, -0.19250917, 0.4174893)
 
-[node name="HandHolding_L" parent="GunPos/single-barrel shotgun/Armature/Skeleton3D" index="5" unique_id=1713044203]
-transform = Transform3D(0.9539734, 0.29989153, -1.7403693e-08, -0.29989144, 0.953973, -5.320464e-08, 6.469918e-10, 5.5974997e-08, 0.99999994, -0.10813519, -0.4309742, 1.0335729)
+[node name="HandHolding_L" parent="GunPos/single-barrel shotgun/Armature/Skeleton3D" index="5" unique_id=150885094]
+transform = Transform3D(0.9529134, 0.3032126, 0.004256919, -0.3032182, 0.95292056, 0.0007338523, -0.0038339933, -0.0019900734, 0.99999064, -0.09256707, -0.43785924, 1.0337708)
 
-[node name="LeftHand" parent="GunPos/single-barrel shotgun/Armature/Skeleton3D/HandHolding_L" index="0" unique_id=1132106968]
+[node name="LeftHand" parent="GunPos/single-barrel shotgun/Armature/Skeleton3D/HandHolding_L" index="0" unique_id=407978590]
 transform = Transform3D(1, 2.985317e-08, 8.0034646e-11, -2.985317e-08, 1, -5.9575548e-08, -8.003642e-11, 5.9575548e-08, 1, -0.07592834, 0.23150426, 0.33055952)
 surface_material_override/0 = SubResource("StandardMaterial3D_7kswj")
 
-[node name="HandHolding_R" parent="GunPos/single-barrel shotgun/Armature/Skeleton3D" index="6" unique_id=1363357435]
-transform = Transform3D(0.9539734, 0.29989153, -1.7403707e-08, -0.29989144, 0.953973, -5.320465e-08, 6.47006e-10, 5.597501e-08, 0.99999994, -0.33314005, -0.3272943, -1.115798)
+[node name="HandHolding_R" parent="GunPos/single-barrel shotgun/Armature/Skeleton3D" index="6" unique_id=944453209]
+transform = Transform3D(0.95334744, 0.30177623, 0.0077352296, -0.30179045, 0.9533737, 0.0007287313, -0.007154653, -0.0030291532, 0.9999698, -0.33404142, -0.33524334, -1.1139143)
 
-[node name="RightHand" parent="GunPos/single-barrel shotgun/Armature/Skeleton3D/HandHolding_R" index="0" unique_id=1854550417]
+[node name="RightHand" parent="GunPos/single-barrel shotgun/Armature/Skeleton3D/HandHolding_R" index="0" unique_id=3569375]
 surface_material_override/0 = SubResource("StandardMaterial3D_723u5")
 
-[node name="ShotgunShellOutside" parent="GunPos/single-barrel shotgun/Armature/Skeleton3D" index="7" unique_id=1308382173]
+[node name="ShotgunShellOutside" parent="GunPos/single-barrel shotgun/Armature/Skeleton3D" index="7" unique_id=269530105]
 transform = Transform3D(1, -4.66045e-10, -2.3795245e-07, -2.379524e-07, 2.9802308e-07, -0.9999996, 4.660876e-10, 0.9999998, 2.9802322e-07, -0.012826644, -0.16793466, -3.391194)
 
-[node name="HandTrigger1" parent="GunPos/single-barrel shotgun/Armature/Skeleton3D" index="8" unique_id=92944286]
-transform = Transform3D(0.7727312, 0.055670854, -0.63228726, -0.61723155, 0.29821512, -0.7280744, 0.14802513, 0.9528737, 0.264802, -1.7845004, -1.0360389, -3.0207725)
+[node name="HandTrigger1" parent="GunPos/single-barrel shotgun/Armature/Skeleton3D" index="8" unique_id=1014224695]
+transform = Transform3D(1, 4.5000264e-15, -2.842171e-14, -4.5000273e-15, 0.9999997, -5.9604645e-08, 0, 5.9604634e-08, 0.99999994, 1.1743163, -0.5378222, -4.814733)
 
-[node name="HandTrigger2" parent="GunPos/single-barrel shotgun/Armature/Skeleton3D" index="9" unique_id=317070266]
+[node name="HandTrigger2" parent="GunPos/single-barrel shotgun/Armature/Skeleton3D" index="9" unique_id=361972173]
 transform = Transform3D(1, 4.5000264e-15, -2.842171e-14, -4.5000273e-15, 0.9999997, -5.9604645e-08, 0, 5.9604634e-08, 0.99999994, 0.1876961, -0.5378222, -4.8147326)
 
-[node name="HandHoldingSmallCylinder" parent="GunPos/single-barrel shotgun/Armature/Skeleton3D" index="10" unique_id=2023277857]
-transform = Transform3D(0.7702399, 0.40877467, -0.4662846, -0.5889828, 0.71484387, -0.34624302, 0.19395164, 0.54743797, 0.80030096, -0.42686805, -1.0729477, -0.7605305)
+[node name="HandHoldingSmallCylinder" parent="GunPos/single-barrel shotgun/Armature/Skeleton3D" index="10" unique_id=1224295688]
+transform = Transform3D(0.9162684, 4.1232314e-15, -2.842171e-14, -4.1232323e-15, 0.9162682, -5.4613857e-08, 0, 5.4613842e-08, 0.91626847, -0.9557991, -0.5378222, -4.814733)
+
+[node name="ReloadTimer" type="Timer" parent="GunPos/single-barrel shotgun" unique_id=797744543]
 
 [node name="HUD" type="Control" parent="." unique_id=1544872282]
 layout_mode = 3
@@ -252,7 +227,6 @@ one_shot = true
 
 [node name="Forced" type="Node" parent="StateMachine" unique_id=18579804]
 
-[connection signal="timeout" from="HealthComponent/InvincibleTimer" to="HealthComponent" method="_on_invincible_timer_timeout"]
 [connection signal="timeout" from="CameraPos/Sprite3D/Timer" to="CameraPos/Sprite3D" method="_on_timer_timeout"]
 
 [editable path="GunPos/single-barrel shotgun"]

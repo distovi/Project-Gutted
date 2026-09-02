@@ -6,6 +6,7 @@ var threats: Array[CharacterBody3D] = []
 
 func _ready() -> void:
 	model = $WildHare
+	$HealthComponent.connect_to_parent_signals()
 	entity_setup()
 
 func _physics_process(delta: float) -> void:
@@ -42,3 +43,6 @@ func _on_area_3d_body_exited(body: Node3D) -> void:
 		threat_inside = false
 	if body.is_in_group("threat"):
 		threats.erase(body)
+
+func _on_died() -> void:
+	queue_free()
